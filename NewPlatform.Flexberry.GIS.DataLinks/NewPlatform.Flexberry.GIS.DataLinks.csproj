@@ -175,9 +175,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Objects\FlexberryGIS%28Objects%29.csproj">
+    <ProjectReference Include="..\NewPlatform.Flexberry.GIS.Objects\NewPlatform.Flexberry.GIS.Objects.csproj">
       <Project>{58d64809-925a-4b44-8403-8e3a14d7bcf8}</Project>
-      <Name>FlexberryGIS%28Objects%29</Name>
+      <Name>NewPlatform.Flexberry.GIS.Objects</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
