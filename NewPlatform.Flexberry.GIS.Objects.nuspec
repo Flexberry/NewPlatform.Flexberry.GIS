@@ -9,7 +9,7 @@
     <licenseUrl>https://github.com/Flexberry/NewPlatform.Flexberry.GIS/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://flexberry.net/ru/developers-flexberry-gis.html</projectUrl>
     <repository type="git" url="https://github.com/Flexberry/NewPlatform.Flexberry.GIS"></repository>
-    <iconUrl>http://flexberry.net/portals/_default/skins/flexerry/images/logo_last.png</iconUrl>
+    <iconUrl>https://flexberry.net/img/logo-color.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Flexberry GIS Objects package.</description>
     <releaseNotes>
@@ -21,10 +21,10 @@
     <dependencies>
       <group targetFramework=".NETFramework4.5">
         <dependency id="NewPlatform.Flexberry.ORM" version="6.0.0-beta11" />
-      </group>      
+      </group>
       <group targetFramework=".NETStandard2.0">
         <dependency id="NewPlatform.Flexberry.ORM" version="6.0.0-beta11" />
-      </group>      
+      </group>
     </dependencies>
   </metadata>
   <files>

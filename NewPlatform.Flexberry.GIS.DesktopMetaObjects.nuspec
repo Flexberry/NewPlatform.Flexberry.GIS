@@ -9,7 +9,7 @@
     <licenseUrl>https://github.com/Flexberry/NewPlatform.Flexberry.GIS/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://flexberry.net/ru/developers-flexberry-gis.html</projectUrl>
     <repository type="git" url="https://github.com/Flexberry/NewPlatform.Flexberry.GIS"></repository>
-    <iconUrl>http://flexberry.net/portals/_default/skins/flexerry/images/logo_last.png</iconUrl>
+    <iconUrl>https://flexberry.net/img/logo-color.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Flexberry GIS Desktop Meta Objects package.</description>
     <releaseNotes>
@@ -20,18 +20,18 @@
     <tags>Flexberry GIS</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.5">
-        <dependency id="NewPlatform.Flexberry.GIS.Objects" version="1.0.0-beta01" />        
+        <dependency id="NewPlatform.Flexberry.GIS.Objects" version="1.0.0-beta01" />
         <dependency id="NewPlatform.Flexberry.ORM" version="6.0.0-beta11" />
-      </group>      
+      </group>
       <group targetFramework=".NETStandard2.0">
-        <dependency id="NewPlatform.Flexberry.GIS.Objects" version="1.0.0-beta01" />        
+        <dependency id="NewPlatform.Flexberry.GIS.Objects" version="1.0.0-beta01" />
         <dependency id="NewPlatform.Flexberry.ORM" version="6.0.0-beta11" />
-      </group>      
+      </group>
     </dependencies>
   </metadata>
   <files>
     <file src="NewPlatform.Flexberry.GIS.DesktopMetaObjects\bin\$configuration$\net45\NewPlatform.Flexberry.GIS.DesktopMetaObjects.dll" target="lib\net45\NewPlatform.Flexberry.GIS.DesktopMetaObjects.dll" />
-    <file src="NewPlatform.Flexberry.GIS.DesktopMetaObjects\bin\$configuration$\net45\NewPlatform.Flexberry.GIS.DesktopMetaObjects.xml" target="lib\net45\NewPlatform.Flexberry.GIS.DesktopMetaObjects.xml" />    
+    <file src="NewPlatform.Flexberry.GIS.DesktopMetaObjects\bin\$configuration$\net45\NewPlatform.Flexberry.GIS.DesktopMetaObjects.xml" target="lib\net45\NewPlatform.Flexberry.GIS.DesktopMetaObjects.xml" />
     <file src="NewPlatform.Flexberry.GIS.DesktopMetaObjects\bin\$configuration$\netstandard2.0\NewPlatform.Flexberry.GIS.DesktopMetaObjects.dll" target="lib\netstandard2.0\NewPlatform.Flexberry.GIS.DesktopMetaObjects.dll" />
     <file src="NewPlatform.Flexberry.GIS.DesktopMetaObjects\bin\$configuration$\netstandard2.0\NewPlatform.Flexberry.GIS.DesktopMetaObjects.xml" target="lib\netstandard2.0\NewPlatform.Flexberry.GIS.DesktopMetaObjects.xml" />
   </files>
