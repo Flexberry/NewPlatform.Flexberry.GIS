@@ -11,7 +11,7 @@
     <repository type="git" url="https://github.com/Flexberry/NewPlatform.Flexberry.GIS"></repository>
     <iconUrl>https://flexberry.net/img/logo-color.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>Flexberry GIS Forms package.</description>
+    <description>Flexberry GIS DataLinks Objects package.</description>
     <releaseNotes>
       Added
       - .NET Standard 2.0 implementation
@@ -23,14 +23,14 @@
         <dependency id="NewPlatform.Flexberry.Caching" version="2.0.0-beta03" />
         <dependency id="NewPlatform.Flexberry.GIS.Objects" version="1.0.0-beta01" />
         <dependency id="NewPlatform.Flexberry.ORM" version="6.0.0-beta11" />
-        <dependency id="NewPlatform.Flexberry.ORM.PostgresDataService" version="6.0.0-beta11" />        
+        <dependency id="NewPlatform.Flexberry.ORM.PostgresDataService" version="6.0.0-beta11" />
       </group>      
       <group targetFramework=".NETStandard2.0">
         <dependency id="NewPlatform.Flexberry.Caching" version="2.0.0-beta03" />
         <dependency id="NewPlatform.Flexberry.GIS.Objects" version="1.0.0-beta01" />
         <dependency id="NewPlatform.Flexberry.ORM" version="6.0.0-beta11" />
-        <dependency id="NewPlatform.Flexberry.ORM.PostgresDataService" version="6.0.0-beta11" />        
-      </group>      
+        <dependency id="NewPlatform.Flexberry.ORM.PostgresDataService" version="6.0.0-beta11" />
+      </group>
     </dependencies>
   </metadata>
   <files>
