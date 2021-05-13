@@ -23,7 +23,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="NewPlatform.Flexberry.GIS.DataLinks\bin\$configuration$\NewPlatform.Flexberry.GIS.Forms.dll" target="lib\net45\NewPlatform.Flexberry.GIS.Forms.dll" />
-    <file src="NewPlatform.Flexberry.GIS.DataLinks\bin\$configuration$\NewPlatform.Flexberry.GIS.Forms.xml" target="lib\net45\NewPlatform.Flexberry.GIS.Forms.xml" />
+    <file src="NewPlatform.Flexberry.GIS.Forms\bin\$configuration$\NewPlatform.Flexberry.GIS.Forms.dll" target="lib\net45\NewPlatform.Flexberry.GIS.Forms.dll" />
+    <file src="NewPlatform.Flexberry.GIS.Forms\bin\$configuration$\NewPlatform.Flexberry.GIS.Forms.xml" target="lib\net45\NewPlatform.Flexberry.GIS.Forms.xml" />
   </files>
 </package>

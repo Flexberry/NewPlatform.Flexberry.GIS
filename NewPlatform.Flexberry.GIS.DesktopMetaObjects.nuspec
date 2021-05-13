@@ -21,7 +21,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="NewPlatform.Flexberry.GIS.DataLinks\bin\$configuration$\NewPlatform.Flexberry.GIS.DesktopMetaObjects.dll" target="lib\net45\NewPlatform.Flexberry.GIS.DesktopMetaObjects.dll" />
-    <file src="NewPlatform.Flexberry.GIS.DataLinks\bin\$configuration$\NewPlatform.Flexberry.GIS.DesktopMetaObjects.xml" target="lib\net45\NewPlatform.Flexberry.GIS.DesktopMetaObjects.xml" />
+    <file src="NewPlatform.Flexberry.GIS.DesktopMetaObjects\bin\$configuration$\NewPlatform.Flexberry.GIS.DesktopMetaObjects.dll" target="lib\net45\NewPlatform.Flexberry.GIS.DesktopMetaObjects.dll" />
+    <file src="NewPlatform.Flexberry.GIS.DesktopMetaObjects\bin\$configuration$\NewPlatform.Flexberry.GIS.DesktopMetaObjects.xml" target="lib\net45\NewPlatform.Flexberry.GIS.DesktopMetaObjects.xml" />
   </files>
 </package>

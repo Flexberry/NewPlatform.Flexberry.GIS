@@ -21,7 +21,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="NewPlatform.Flexberry.GIS.DataLinks\bin\$configuration$\NewPlatform.Flexberry.GIS.Objects.dll" target="lib\net45\NewPlatform.Flexberry.GIS.Objects.dll" />
-    <file src="NewPlatform.Flexberry.GIS.DataLinks\bin\$configuration$\NewPlatform.Flexberry.GIS.Objects.xml" target="lib\net45\NewPlatform.Flexberry.GIS.Objects.xml" />
+    <file src="NewPlatform.Flexberry.GIS.Objects\bin\$configuration$\NewPlatform.Flexberry.GIS.Objects.dll" target="lib\net45\NewPlatform.Flexberry.GIS.Objects.dll" />
+    <file src="NewPlatform.Flexberry.GIS.Objects\bin\$configuration$\NewPlatform.Flexberry.GIS.Objects.xml" target="lib\net45\NewPlatform.Flexberry.GIS.Objects.xml" />
   </files>
 </package>
