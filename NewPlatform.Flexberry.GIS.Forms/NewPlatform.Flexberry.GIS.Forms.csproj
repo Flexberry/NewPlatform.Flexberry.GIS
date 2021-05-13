@@ -361,11 +361,11 @@
     <EmbeddedResource Include="scripts\jquery.gis.js" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataLinks\NewPlatform.Flexberry.GIS.DataLinks.csproj">
+    <ProjectReference Include="..\NewPlatform.Flexberry.GIS.DataLinks\NewPlatform.Flexberry.GIS.DataLinks.csproj">
       <Project>{446f85e9-1452-49bd-bec4-af168da7fe0c}</Project>
       <Name>NewPlatform.Flexberry.GIS.DataLinks</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Objects\NewPlatform.Flexberry.GIS.Objects.csproj">
+    <ProjectReference Include="..\NewPlatform.Flexberry.GIS.Objects\NewPlatform.Flexberry.GIS.Objects.csproj">
       <Project>{58d64809-925a-4b44-8403-8e3a14d7bcf8}</Project>
       <Name>NewPlatform.Flexberry.GIS.Objects</Name>
     </ProjectReference>
