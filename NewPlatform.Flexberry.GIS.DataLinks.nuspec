@@ -21,7 +21,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="NewPlatform.Flexberry.GIS.DataLinks.dll" target="lib\net45\NewPlatform.Flexberry.GIS.DataLinks.dll" />
-    <file src="NewPlatform.Flexberry.GIS.DataLinks.xml" target="lib\net45\NewPlatform.Flexberry.GIS.DataLinks.xml" />
+    <file src="NewPlatform.Flexberry.GIS.DataLinks\bin\$configuration$\NewPlatform.Flexberry.GIS.DataLinks.dll" target="lib\net45\NewPlatform.Flexberry.GIS.DataLinks.dll" />
+    <file src="NewPlatform.Flexberry.GIS.DataLinks\bin\$configuration$\NewPlatform.Flexberry.GIS.DataLinks.xml" target="lib\net45\NewPlatform.Flexberry.GIS.DataLinks.xml" />
   </files>
 </package>
