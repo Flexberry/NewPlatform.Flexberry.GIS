@@ -1,10 +1,10 @@
-﻿namespace NewPlatform.Flexberry.GIS.TriggerGenerator
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using ICSSoft.STORMNET;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using ICSSoft.STORMNET;
 
+namespace NewPlatform.Flexberry.GIS.TriggerGenerator
+{
     /// <summary>
     /// Хелпер для языка SQL
     /// </summary>
@@ -83,7 +83,7 @@
 
         /// <summary>
         /// </summary>
-        public override string DropSpatialTriggersCommand(string triggerName, string functionSchema)
+        public override string DropSpatialTriggersCommand(string triggerName)
         {
             var procedureExec = string.Format(
                     @"IF OBJECT_ID('{0}', 'P') IS NOT NULL BEGIN
@@ -97,7 +97,7 @@
 
         /// <summary>
         /// </summary>
-        public override string CommandTextForTriggerForSpatialRecordsCount(string layer, string triggerPrefix, string triggerName, Dictionary<string, string> linkParams, Chain chain, string owner = "", string functionSchema = "")
+        public override string CommandTextForTriggerForSpatialRecordsCount(string layer, string triggerPrefix, string triggerName, Dictionary<string, string> linkParams, Chain chain, string owner = "")
         {
             string result = $@"CREATE TRIGGER {triggerPrefix}{triggerName}{Environment.NewLine}";
             result += $"ON {layer}{Environment.NewLine}";
@@ -114,12 +114,12 @@
 		                FROM
 			                (SELECT COUNT(*) cnt, {linkColumns} FROM DELETED GROUP BY {linkColumns}) tbl WHERE ";
 
-            result += string.Join(" AND ", linkParams.Select(link => $"tbl.{link.Key}={link.Value.Replace("@", "")}").ToArray()) + Environment.NewLine;
+            result += string.Join(" AND ", linkParams.Select(link => $"tbl.{link.Key}={link.Value}").ToArray()) + Environment.NewLine;
 
             result += $"UPDATE {chain.FullTableName}{Environment.NewLine}";
             result += $@"SET [SpatialRecordsCount] = ISNULL([SpatialRecordsCount], 0) + tbl.cnt
             	  FROM (SELECT COUNT(*) cnt, {linkColumns} FROM INSERTED GROUP BY {linkColumns}) tbl WHERE ";
-            result += string.Join(" AND ", linkParams.Select(link => $"tbl.{link.Key}={link.Value.Replace("@", "")}").ToArray()) + Environment.NewLine;
+            result += string.Join(" AND ", linkParams.Select(link => $"tbl.{link.Key}={link.Value}").ToArray()) + Environment.NewLine;
             result += "END END";
             return result;
         }
@@ -127,7 +127,7 @@
         /// <summary>
         /// </summary>
         public override string CommandTextForTriggerForSpatialRecordsCountOnDelete(string layer, string triggerName,
-            Dictionary<string, string> linkParams, Chain chain, string owner = "", string functionSchema = "")
+            Dictionary<string, string> linkParams, Chain chain, string owner = "")
         {
             string result = $@"CREATE TRIGGER {triggerName}{Environment.NewLine}";
             result += $"ON {layer}{Environment.NewLine}";
@@ -141,7 +141,7 @@
 			                 END)
 		                FROM
 			                (SELECT COUNT(*) cnt, {linkColumns} FROM DELETED GROUP BY {linkColumns}) tbl WHERE ";
-            result += $"{string.Join(" AND ", linkParams.Select(link => $"tbl.{link.Key}={link.Value.Replace("@", "")}").ToArray())}{Environment.NewLine}";
+            result += $"{string.Join(" AND ", linkParams.Select(link => $"tbl.{link.Key}={link.Value}").ToArray())}{Environment.NewLine}";
             result += "END";
             return result;
         }
@@ -159,7 +159,7 @@
             innerSelect += "GROUP BY " + fields + Environment.NewLine;
             result += "(" + innerSelect + ") spatialTable" + Environment.NewLine;
             result += "WHERE" + Environment.NewLine;
-            result += string.Join(" AND ", linkParams.Select(links => $"spatialTable.{links.Key}={links.Value.Replace("@", "")}").ToArray());
+            result += string.Join(" AND ", linkParams.Select(links => $"spatialTable.{links.Key}={links.Value}").ToArray());
             return result;
         }
 
@@ -183,14 +183,14 @@
             innerSelect += "GROUP BY " + fields + Environment.NewLine;
             result += "FROM (" + innerSelect + ") spatialTable" + Environment.NewLine;
             result += "WHERE" + Environment.NewLine;
-            result += string.Join(" AND ", linkParams.Select(links => $"spatialTable.{links.Key}={links.Value.Replace("@", "")}").ToArray()) + Environment.NewLine;
+            result += string.Join(" AND ", linkParams.Select(links => $"spatialTable.{links.Key}={links.Value}").ToArray()) + Environment.NewLine;
             result += "END";
             return result;
         }
 
         /// <summary>
         /// </summary>
-        public override string CommandTextForTriggerForUpdateSpatialObject(string layer, string triggerName, Dictionary<string, string> linkParams, bool clearWithoutLink, Chain chain, List<MapExpressionField> expressionFields, Dictionary<string, string> simpleFields, string owner = "", string functionSchema = "")
+        public override string CommandTextForTriggerForUpdateSpatialObject(string layer, string triggerName, Dictionary<string, string> linkParams, bool clearWithoutLink, Chain chain, List<MapExpressionField> expressionFields, Dictionary<string, string> simpleFields, string owner = "")
         {
             string result = $@"CREATE TRIGGER {triggerName}{Environment.NewLine}";
             result += $"ON {layer}{Environment.NewLine}";
@@ -205,7 +205,7 @@
 
             result += $"FROM {layer} layer {(clearWithoutLink ? "LEFT" : "INNER")} JOIN {chain.FullTableName} {chain.Alias} ON ";
             result += string.Join(" AND ",
-                linkParams.Select(links => $"layer.{links.Key} = {chain.Alias}.{links.Value.Replace("@", "")}")
+                linkParams.Select(links => $"layer.{links.Key} = {chain.Alias}.{links.Value}")
                            .ToArray()) + Environment.NewLine;
             result += FromStatement("", chain);
             result += $"INNER JOIN inserted ON inserted.{SpatialIdField} = layer.{SpatialIdField} ";
@@ -216,7 +216,7 @@
         /// <summary>
         /// </summary>
         public override string CommandTextForTriggerForInsertSpatialObject(string layer, string triggerName, Dictionary<string, string> linkParams, 
-            bool clearWithoutLink, Chain chain, List<MapExpressionField> expressionFields, Dictionary<string, string> simpleFields, string owner = "", string functionSchema = "")
+            bool clearWithoutLink, Chain chain, List<MapExpressionField> expressionFields, Dictionary<string, string> simpleFields, string owner = "")
         {
             string result =
                 $@"
@@ -262,7 +262,7 @@ END";
             string updateCommand = "UPDATE layer" + Environment.NewLine;
             updateCommand += setCommand;
             updateCommand += $"FROM {layer} layer INNER JOIN {field.Chain.FullTableName} {field.Chain.Alias} ON ";
-            updateCommand += string.Join(" AND ", linkParams.Select(flink => $"layer.{flink.Key} = {field.Chain.Alias}.{flink.Value.Replace("@", "")}").ToArray()) + Environment.NewLine;
+            updateCommand += string.Join(" AND ", linkParams.Select(flink => $"layer.{flink.Key} = {field.Chain.Alias}.{flink.Value}").ToArray()) + Environment.NewLine;
             updateCommand += FromStatement("", field.Chain);
             return updateCommand;
         }
@@ -270,7 +270,7 @@ END";
         /// <summary>
         /// </summary>
         public override string DeleteTrigger(string layer, string triggerName, Type rootType,
-            Dictionary<string, string> linkParams, List<MapExpressionField> expressionFields, Dictionary<string, MapSimpleField> simpleFields, string owner = "", string functionSchema = "")
+            Dictionary<string, string> linkParams, List<MapExpressionField> expressionFields, Dictionary<string, MapSimpleField> simpleFields, string owner = "")
         {
             var triggerCommand = string.Empty;
             triggerCommand += $@"CREATE TRIGGER {triggerName}{Environment.NewLine}";
@@ -287,7 +287,7 @@ END";
 
             triggerCommand += " FROM deleted ";
             triggerCommand += " INNER JOIN " + layer + " layer ON ";
-            triggerCommand += string.Join(" AND ", linkParams.Select(flink => "layer." + flink.Key + "= deleted." + flink.Value.Replace("@", "")).ToArray()) + Environment.NewLine;
+            triggerCommand += string.Join(" AND ", linkParams.Select(flink => "layer." + flink.Key + "= deleted." + flink.Value).ToArray()) + Environment.NewLine;
             triggerCommand += "END";
 
             return triggerCommand;
@@ -296,7 +296,7 @@ END";
         /// <summary>
         /// </summary>
         public override string UpdateTrigger(string layer, string triggerName, Type rootType,
-            Dictionary<string, string> linkParams, string fromTableName, MapField field, string setCommand, string owner = "", string functionSchema = "")
+            Dictionary<string, string> linkParams, string fromTableName, MapField field, string setCommand, string owner = "")
         {
             string triggerCommand = $"CREATE TRIGGER {triggerName}{Environment.NewLine}";
             triggerCommand += $"ON {fromTableName} AFTER INSERT, UPDATE AS BEGIN{Environment.NewLine}";
@@ -316,7 +316,7 @@ END";
                 " AND ",
                 linkParams.Select(
                     flink =>
-                        $"layer.{flink.Key}={field.Chain.Alias}.{flink.Value.Replace("@", "")}").
+                        $"layer.{flink.Key}={field.Chain.Alias}.{flink.Value}").
                                   ToArray()) + Environment.NewLine;
 
             triggerCommand += FromStatement(fromTableName, field.Chain) + Environment.NewLine;

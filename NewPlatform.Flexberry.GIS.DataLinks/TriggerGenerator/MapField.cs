@@ -6,9 +6,9 @@ namespace NewPlatform.Flexberry.GIS.TriggerGenerator
     {
         public Chain Chain { get; protected set; }        
 
-        protected MapField(Type type, string prefix = "")
+        protected MapField(Type type)
         {            
-            Chain = new Chain(type, prefix);
+            Chain = new Chain(type, "");
         }
     }
 }

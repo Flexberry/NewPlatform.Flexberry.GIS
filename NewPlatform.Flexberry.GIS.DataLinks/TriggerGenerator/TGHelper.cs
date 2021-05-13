@@ -1,8 +1,8 @@
 ﻿using System;
 using ICSSoft.Services;
 using ICSSoft.STORMNET;
-using Unity;
 using ICSSoft.STORMNET.Business;
+using Unity;
 
 namespace NewPlatform.Flexberry.GIS.TriggerGenerator
 {
@@ -35,7 +35,7 @@ namespace NewPlatform.Flexberry.GIS.TriggerGenerator
             {
                 throw new Exception($"Не указана настройка объекта");
             }
-            
+
             DataService.LoadObject(layerLink.MapObjectSetting);
 
             if (string.IsNullOrEmpty(layerLink.MapObjectSetting.TypeName))

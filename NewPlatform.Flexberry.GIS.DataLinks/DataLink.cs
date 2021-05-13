@@ -11,16 +11,12 @@
 namespace NewPlatform.Flexberry.GIS
 {
     using System;
-    using System.Xml;
-    using ICSSoft.STORMNET;
-
-
     // *** Start programmer edit section *** (Using statements)
     using System.Data;
-    using Unity;
-
     using ICSSoft.Services;
+    using ICSSoft.STORMNET;
     using NewPlatform.Flexberry.GIS.TriggerGenerator;
+    using Unity;
 
     // *** End programmer edit section *** (Using statements)
 
@@ -36,27 +32,27 @@ namespace NewPlatform.Flexberry.GIS
     [View("DataLinkD", new string[] {
             "MapObjectSetting",
             "LayerTable as \'Таблица в геоданных\'",
-            "CreateObject as \'Триггер на создание\'"}, Hidden=new string[] {
+            "CreateObject as \'Триггер на создание\'"}, Hidden = new string[] {
             "MapObjectSetting"})]
     [View("DataLinkE", new string[] {
             "MapObjectSetting",
             "LayerTable as \'Таблица в геоданных\'",
             "ClearWithoutLink as \'Очищать, если нет данных\'",
-            "CreateObject as \'Триггер на создание\'"}, Hidden=new string[] {
+            "CreateObject as \'Триггер на создание\'"}, Hidden = new string[] {
             "MapObjectSetting"})]
     [AssociatedDetailViewAttribute("DataLinkE", "DataLinkParameter", "DataLinkParameterD", true, "", "", true, new string[] {
             ""})]
     public class DataLink : ICSSoft.STORMNET.DataObject
     {
-        
+
         private bool fClearWithoutLink = false;
-        
+
         private string fLayerTable;
 
         private bool fCreateObject = false;
 
         private NewPlatform.Flexberry.GIS.DetailArrayOfDataLinkParameter fDataLinkParameter;
-        
+
         private NewPlatform.Flexberry.GIS.MapObjectSetting fMapObjectSetting;
 
         // *** Start programmer edit section *** (DataLink CustomMembers)
@@ -130,7 +126,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (DataLink.ClearWithoutLink Set end)
             }
         }
-        
+
         /// <summary>
         /// LayerTable.
         /// </summary>
@@ -229,7 +225,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (DataLink.DataLinkParameter Set end)
             }
         }
-        
+
         /// <summary>
         /// мастеровая ссылка на шапку NewPlatform.Flexberry.GIS.MapObjectSetting.
         /// </summary>
@@ -264,13 +260,13 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (DataLink.MapObjectSetting Set end)
             }
         }
-        
+
         /// <summary>
         /// Class views container.
         /// </summary>
         public class Views
         {
-            
+
             /// <summary>
             /// "DataLinkD" view.
             /// </summary>
@@ -281,7 +277,7 @@ namespace NewPlatform.Flexberry.GIS
                     return ICSSoft.STORMNET.Information.GetView("DataLinkD", typeof(NewPlatform.Flexberry.GIS.DataLink));
                 }
             }
-            
+
             /// <summary>
             /// "DataLinkE" view.
             /// </summary>
@@ -294,7 +290,7 @@ namespace NewPlatform.Flexberry.GIS
             }
         }
     }
-    
+
     /// <summary>
     /// Detail array of DataLink.
     /// </summary>
@@ -303,12 +299,12 @@ namespace NewPlatform.Flexberry.GIS
     // *** End programmer edit section *** (DetailArrayDetailArrayOfDataLink CustomAttributes)
     public class DetailArrayOfDataLink : ICSSoft.STORMNET.DetailArray
     {
-        
+
         // *** Start programmer edit section *** (NewPlatform.Flexberry.GIS.DetailArrayOfDataLink members)
 
         // *** End programmer edit section *** (NewPlatform.Flexberry.GIS.DetailArrayOfDataLink members)
 
-        
+
         /// <summary>
         /// Construct detail array.
         /// </summary>
@@ -318,11 +314,11 @@ namespace NewPlatform.Flexberry.GIS
         /// <summary>
         /// Adds object with type DataLink.
         /// </summary>
-        public DetailArrayOfDataLink(NewPlatform.Flexberry.GIS.MapObjectSetting fMapObjectSetting) : 
+        public DetailArrayOfDataLink(NewPlatform.Flexberry.GIS.MapObjectSetting fMapObjectSetting) :
                 base(typeof(DataLink), ((ICSSoft.STORMNET.DataObject)(fMapObjectSetting)))
         {
         }
-        
+
         public NewPlatform.Flexberry.GIS.DataLink this[int index]
         {
             get
@@ -330,7 +326,7 @@ namespace NewPlatform.Flexberry.GIS
                 return ((NewPlatform.Flexberry.GIS.DataLink)(this.ItemByIndex(index)));
             }
         }
-        
+
         public virtual void Add(NewPlatform.Flexberry.GIS.DataLink dataobject)
         {
             this.AddObject(((ICSSoft.STORMNET.DataObject)(dataobject)));

@@ -20,7 +20,7 @@ namespace NewPlatform.Flexberry.GIS.TriggerGenerator
         
         /// <summary>
         /// </summary>
-        public MapExpressionField(Type type, string field, string sqlExpression, string prefix = "") : base(type, prefix)
+        public MapExpressionField(Type type, string field, string sqlExpression) : base(type)
         {
             LayerField = field;
             Expression = sqlExpression;

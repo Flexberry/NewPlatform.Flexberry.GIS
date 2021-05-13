@@ -87,7 +87,7 @@
                         var databaseFieldName = propertyType.IsSubclassOf(typeof(DataObject))
                             ? Information.GetPropertyStorageName(RootType, linkParam.ObjectField, 0)
                             : Information.GetPropertyStorageName(RootType, linkParam.ObjectField);
-                        LinkParams.Add(linkParam.LayerField, "@" + TGHelper.DataBaseHelper.Format(databaseFieldName));
+                        LinkParams.Add(linkParam.LayerField, TGHelper.DataBaseHelper.Format(databaseFieldName));
                     }
                     else
                     {
@@ -110,8 +110,7 @@
                                     ? Information.GetPropertyStorageName(RootType, field, 0)
                                     : Information.GetPropertyStorageName(RootType, field);
 
-                                // оставим @ впереди, чтобы знать куда будет добавляться алиас
-                                expression = expression.Replace(match.Value.TrimStart('@'), TGHelper.DataBaseHelper.Format(databaseFieldName));
+                                expression = expression.Replace(match.Value, TGHelper.DataBaseHelper.Format(databaseFieldName));
                             }
                             else
                             {

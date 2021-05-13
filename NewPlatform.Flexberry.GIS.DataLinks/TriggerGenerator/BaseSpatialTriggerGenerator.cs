@@ -1,12 +1,9 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace NewPlatform.Flexberry.GIS.TriggerGenerator
 {
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Linq;
-    using ICSSoft.STORMNET;
-
     /// <summary>
     /// </summary>
     public class BaseSpatialTriggerGenerator : BaseTriggerGenerator
@@ -33,36 +30,29 @@ namespace NewPlatform.Flexberry.GIS.TriggerGenerator
         protected bool GenerateCreateObjectTrigger { get; private set; }
 
         /// <summary>
-        /// Общая часть имени атрибутивной таблицы которая участвует в триггере(схема или бд.схема)
+        /// Общая часть имени атрибутивной таблицы которая учавствует в триггере(схема или бд.схема)
         /// </summary>
         protected string BasePrefix { get; private set; }
-
-        /// <summary>
-        /// Схема создаваемых функций
-        /// </summary>
-        protected string FunctionSchema { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="layerPrefix">Общая имени слоя на который генерируются триггеры, может быть (схема или бд.схема)</param>
-        /// <param name="basePrefix">Общая часть имени атрибутивной таблицы которая участвует в триггере (схема или бд.схема)</param>
+        /// <param name="basePrefix">Общая часть имени атрибутивной таблицы которая учавствует в триггере(схема или бд.схема)</param>
         /// <param name="triggerPrefix">Общая начальная часть имени генерируемыех триггеров</param>
-        /// <param name="functionSchema">Схема, в которой будут созданы тригерные функции</param>
         /// <param name="owner">Поменять владельца созданных объектов на указанного</param>
-        public BaseSpatialTriggerGenerator(string layerPrefix, string basePrefix, string triggerPrefix, string functionSchema = "", string owner = "") : base(layerPrefix, triggerPrefix, owner)
+        public BaseSpatialTriggerGenerator(string layerPrefix, string basePrefix, string triggerPrefix, string owner = "") : base(layerPrefix, triggerPrefix, owner)
         {
             BasePrefix = basePrefix;
-            FunctionSchema = functionSchema;
+
+            var hasher = System.Security.Cryptography.MD5.Create();
+            var hashdata = hasher.ComputeHash(System.Text.Encoding.Default.GetBytes($"procedure_unjoin_{TriggerKey}"));
+            ProcedureName = string.Concat(hashdata.Select(b => b.ToString("x2")).ToArray());
         }
 
         public override void InitByDataLink(DataLink link)
         {
             base.InitByDataLink(link);
-
-            var hasher = System.Security.Cryptography.MD5.Create();
-            var hashdata = hasher.ComputeHash(System.Text.Encoding.Default.GetBytes($"procedure_unjoin_{TriggerKey}"));
-            ProcedureName = string.Concat(hashdata.Select(b => b.ToString("x2")).ToArray());
 
             Chain = new Chain(RootType, BasePrefix);
 
@@ -93,68 +83,51 @@ namespace NewPlatform.Flexberry.GIS.TriggerGenerator
         /// <param name="sqlCommand">sql command с открытым соединением и, если требуется, транзакцией.</param>
         public override void GenerateTriggers(IDbCommand sqlCommand)
         {
-            var sql = TGHelper.DataBaseHelper.CommandTextForTriggerForSpatialRecordsCount(Layer, TriggerPrefix, $"_upd_SOC_{TriggerKey}", LinkParams, Chain, Owner, FunctionSchema);
+            var sql = TGHelper.DataBaseHelper.CommandTextForTriggerForSpatialRecordsCount(Layer, TriggerPrefix, $"_upd_SOC_{TriggerKey}", LinkParams, Chain, Owner);
             if (!string.IsNullOrEmpty(sql))
             {
                 sqlCommand.CommandText = sql;
-                LogService.LogDebug(sql);
                 sqlCommand.ExecuteNonQuery();
-                LogService.LogDebug("done");
             }
 
-            sql = TGHelper.DataBaseHelper.CommandTextForTriggerForSpatialRecordsCountOnDelete(Layer, $"{TriggerPrefix}_del_SOC_{TriggerKey}", LinkParams, Chain, Owner, FunctionSchema);
+            sql = TGHelper.DataBaseHelper.CommandTextForTriggerForSpatialRecordsCountOnDelete(Layer, $"{TriggerPrefix}_del_SOC_{TriggerKey}", LinkParams, Chain, Owner);
             if (!string.IsNullOrEmpty(sql))
             {
                 sqlCommand.CommandText = sql;
-                LogService.LogDebug(sql);
                 sqlCommand.ExecuteNonQuery();
-                LogService.LogDebug("done");
             }
 
-            var ignoreInitial = (ConfigurationManager.AppSettings["ignoreInitial"] ?? "") == "1";
-            if (!ignoreInitial)
-            {
-                sql = TGHelper.DataBaseHelper.InitialUpdateCommandForSpatialRecordsCount(Layer, LinkParams, Chain, Owner);
-                if (!string.IsNullOrEmpty(sql))
-                {
-                    sqlCommand.CommandText = sql;
-                    LogService.LogDebug(sql);
-                    sqlCommand.ExecuteNonQuery();
-                    LogService.LogDebug("done");
-                }
-            }
-            else LogService.LogDebug($"Игнорируем заполнение SpatialRecordsCount для таблицы {Chain.FullTableName}");
-            
-            sql = TGHelper.DataBaseHelper.CommandTextForTriggerForUpdateSpatialObject(Layer, $"{TriggerPrefix}_USO_{TriggerKey}", LinkParams, ClearWithoutLink, Chain, ExpressionFields, SimpleFields, Owner, FunctionSchema);
+            sql = TGHelper.DataBaseHelper.InitialUpdateCommandForSpatialRecordsCount(Layer, LinkParams, Chain, Owner);
             if (!string.IsNullOrEmpty(sql))
             {
                 sqlCommand.CommandText = sql;
-                LogService.LogDebug(sql);
                 sqlCommand.ExecuteNonQuery();
-                LogService.LogDebug("done");
+            }
+
+            sql = TGHelper.DataBaseHelper.CreateStoredProcedureForUnjoinSpatialCounter(Layer, $"{TriggerPrefix}_unjn_{ProcedureName}", LinkParams, Chain, Owner);
+            if (!string.IsNullOrEmpty(sql))
+            {
+                sqlCommand.CommandText = sql;
+                sqlCommand.ExecuteNonQuery();
+            }
+
+            sql = TGHelper.DataBaseHelper.CommandTextForTriggerForUpdateSpatialObject(Layer, $"{TriggerPrefix}_USO_{TriggerKey}", LinkParams, ClearWithoutLink, Chain, ExpressionFields, SimpleFields, Owner);
+            if (!string.IsNullOrEmpty(sql))
+            {
+                sqlCommand.CommandText = sql;
+                sqlCommand.ExecuteNonQuery();
             }
 
             if (GenerateCreateObjectTrigger)
             {
                 sql = TGHelper.DataBaseHelper.CommandTextForTriggerForInsertSpatialObject(Layer,
                     $"{TriggerPrefix}_ISO_{TriggerKey}", LinkParams, ClearWithoutLink, Chain, ExpressionFields,
-                    SimpleFields, Owner, FunctionSchema);
+                    SimpleFields, Owner);
                 if (!string.IsNullOrEmpty(sql))
                 {
                     sqlCommand.CommandText = sql;
-                    LogService.LogDebug(sql);
                     sqlCommand.ExecuteNonQuery();
-                    LogService.LogDebug("done");
                 }
-            }
-
-            sql = TGHelper.DataBaseHelper.CreateStoredProcedureForUnjoinSpatialCounter(Layer, $"{FunctionSchema}{TriggerPrefix}_unjn_{ProcedureName}", LinkParams, Chain, Owner);
-            if (!string.IsNullOrEmpty(sql))
-            {
-                sqlCommand.CommandText = sql;
-                LogService.LogDebug(sql);
-                sqlCommand.ExecuteNonQuery();
-                LogService.LogDebug("done");
             }
         }
 
@@ -162,17 +135,13 @@ namespace NewPlatform.Flexberry.GIS.TriggerGenerator
         /// <param name="sqlCommand">sql command с открытым соединением и, если требуется, транзакцией.</param>
         public override void DropTriggers(IDbCommand sqlCommand)
         {
-            var sql = TGHelper.DataBaseHelper.DropSpatialTriggersCommand($"{TriggerPrefix}_unjn_{ProcedureName}", FunctionSchema);
+            var sql = TGHelper.DataBaseHelper.DropSpatialTriggersCommand($"{TriggerPrefix}_unjn_{ProcedureName}");
             sqlCommand.CommandText = sql;
-            LogService.LogDebug(sql);
             sqlCommand.ExecuteNonQuery();
-            LogService.LogDebug("done");
 
-            sql = TGHelper.DataBaseHelper.DropTriggersCommand(TriggerKey, (FunctionSchema ?? "") + TriggerPrefix);
+            sql = TGHelper.DataBaseHelper.DropTriggersCommand(TriggerKey, TriggerPrefix);
             sqlCommand.CommandText = sql;
-            LogService.LogDebug(sql);
             sqlCommand.ExecuteNonQuery();
-            LogService.LogDebug("done");
         }
     }
 }

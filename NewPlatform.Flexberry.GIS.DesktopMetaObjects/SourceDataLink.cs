@@ -13,8 +13,8 @@ namespace NewPlatform.Flexberry.GIS
     using System;
     using System.Xml;
     using ICSSoft.STORMNET;
-
-
+    
+    
     // *** Start programmer edit section *** (Using statements)
 
     // *** End programmer edit section *** (Using statements)
@@ -28,11 +28,6 @@ namespace NewPlatform.Flexberry.GIS
     // *** End programmer edit section *** (SourceDataLink CustomAttributes)
     [AutoAltered()]
     [AccessType(ICSSoft.STORMNET.AccessType.none)]
-    [View("SourceDataLinkD", new string[] {
-            "MapObjectSetting",
-            "Source as \'Источник геоданных\'",
-            "AllowShow as \'Показывать\'"}, Hidden = new string[] {
-            "MapObjectSetting"})]
     [View("SourceDataLinkE", new string[] {
             "MapObjectSetting.TypeName",
             "MapObjectSetting.ListForm",
@@ -40,41 +35,35 @@ namespace NewPlatform.Flexberry.GIS
             "MapObjectSetting.MultEditForm",
             "MapObjectSetting.Title",
             "MapObjectSetting",
-            "Source as \'Источник геоданных\'",
-            "AllowShow as \'Показывать\'",
-            "AllowCreate as \'Разрешить переход\'",
-            "AllowLink as \'Разрешить создание\'",
-            "AllowMultCreate as \'Разрешить создание нескольких объектов\'"}, Hidden = new string[] {
-            "MapObjectSetting.TypeName",
-            "MapObjectSetting.ListForm",
-            "MapObjectSetting.EditForm",
-            "MapObjectSetting.MultEditForm",
-            "MapObjectSetting.Title",
-            "MapObjectSetting"})]
+            "Source",
+            "AllowShow",
+            "AllowCreate",
+            "AllowLink",
+            "AllowMultCreate"})]
     [AssociatedDetailViewAttribute("SourceDataLinkE", "SourceDataLinkParameter", "SourceDataLinkParameterD", true, "", "", true, new string[] {
             ""})]
     public class SourceDataLink : ICSSoft.STORMNET.DataObject
     {
-
+        
         private string fSource;
-
+        
         private bool fAllowShow;
-
+        
         private bool fAllowCreate;
-
+        
         private bool fAllowMultCreate;
-
+        
         private bool fAllowLink;
-
+        
         private NewPlatform.Flexberry.GIS.MapObjectSetting fMapObjectSetting;
-
+        
         private NewPlatform.Flexberry.GIS.DetailArrayOfSourceDataLinkParameter fSourceDataLinkParameter;
-
+        
         // *** Start programmer edit section *** (SourceDataLink CustomMembers)
 
         // *** End programmer edit section *** (SourceDataLink CustomMembers)
 
-
+        
         /// <summary>
         /// Source.
         /// </summary>
@@ -106,7 +95,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (SourceDataLink.Source Set end)
             }
         }
-
+        
         /// <summary>
         /// AllowShow.
         /// </summary>
@@ -137,7 +126,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (SourceDataLink.AllowShow Set end)
             }
         }
-
+        
         /// <summary>
         /// AllowCreate.
         /// </summary>
@@ -168,7 +157,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (SourceDataLink.AllowCreate Set end)
             }
         }
-
+        
         /// <summary>
         /// AllowMultCreate.
         /// </summary>
@@ -199,7 +188,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (SourceDataLink.AllowMultCreate Set end)
             }
         }
-
+        
         /// <summary>
         /// AllowLink.
         /// </summary>
@@ -230,7 +219,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (SourceDataLink.AllowLink Set end)
             }
         }
-
+        
         /// <summary>
         /// SourceDataLink.
         /// </summary>
@@ -264,7 +253,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (SourceDataLink.MapObjectSetting Set end)
             }
         }
-
+        
         /// <summary>
         /// SourceDataLink.
         /// </summary>
@@ -299,24 +288,13 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (SourceDataLink.SourceDataLinkParameter Set end)
             }
         }
-
+        
         /// <summary>
         /// Class views container.
         /// </summary>
         public class Views
         {
-
-            /// <summary>
-            /// "SourceDataLinkD" view.
-            /// </summary>
-            public static ICSSoft.STORMNET.View SourceDataLinkD
-            {
-                get
-                {
-                    return ICSSoft.STORMNET.Information.GetView("SourceDataLinkD", typeof(NewPlatform.Flexberry.GIS.SourceDataLink));
-                }
-            }
-
+            
             /// <summary>
             /// "SourceDataLinkE" view.
             /// </summary>
@@ -327,48 +305,6 @@ namespace NewPlatform.Flexberry.GIS
                     return ICSSoft.STORMNET.Information.GetView("SourceDataLinkE", typeof(NewPlatform.Flexberry.GIS.SourceDataLink));
                 }
             }
-        }
-    }
-
-    /// <summary>
-    /// Detail array of SourceDataLink.
-    /// </summary>
-    // *** Start programmer edit section *** (DetailArrayOfSourceDataLink CustomAttributes)
-
-    // *** End programmer edit section *** (DetailArrayOfSourceDataLink CustomAttributes)
-    public class DetailArrayOfSourceDataLink : ICSSoft.STORMNET.DetailArray
-    {
-
-        // *** Start programmer edit section *** (NewPlatform.Flexberry.GIS.DetailArrayOfSourceDataLink members)
-
-        // *** End programmer edit section *** (NewPlatform.Flexberry.GIS.DetailArrayOfSourceDataLink members)
-
-
-        /// <summary>
-        /// Construct detail array.
-        /// </summary>
-        /// <summary>
-        /// Returns object with type SourceDataLink by index.
-        /// </summary>
-        /// <summary>
-        /// Adds object with type DataLink.
-        /// </summary>
-        public DetailArrayOfSourceDataLink(NewPlatform.Flexberry.GIS.MapObjectSetting fMapObjectSetting) :
-                base(typeof(SourceDataLink), ((ICSSoft.STORMNET.DataObject)(fMapObjectSetting)))
-        {
-        }
-
-        public NewPlatform.Flexberry.GIS.SourceDataLink this[int index]
-        {
-            get
-            {
-                return ((NewPlatform.Flexberry.GIS.SourceDataLink)(this.ItemByIndex(index)));
-            }
-        }
-
-        public virtual void Add(NewPlatform.Flexberry.GIS.SourceDataLink dataobject)
-        {
-            this.AddObject(((ICSSoft.STORMNET.DataObject)(dataobject)));
         }
     }
 }

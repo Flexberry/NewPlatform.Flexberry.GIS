@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NewPlatform.Flexberry.GIS.Forms</id>
+    <version>0.3.0-beta09.1</version>
+    <title>Flexberry GIS Forms</title>
+    <authors>New Platform Ltd.</authors>
+    <owners>New Platform Ltd.</owners>
+    <licenseUrl>http://flexberry.ru/Licenses/LicenseFlexberryORMDeveloper</licenseUrl>
+    <projectUrl>http://flexberry.net</projectUrl>
+    <iconUrl>http://flexberry.net/portals/_default/skins/flexerry/images/logo_last.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Flexberry GIS Forms package.</description>
+    <releaseNotes>
+      1) Update version nuget packages.
+    </releaseNotes>
+    <copyright>Copyright New Platform Ltd. 2017</copyright>
+    <tags>GIS Flexberry</tags>
+    <dependencies>
+      <dependency id="NewPlatform.Flexberry.AspNet" version="2.3.1-beta05" />
+      <dependency id="NewPlatform.Flexberry.GIS.Objects" version="0.3.0-beta09.1" />
+      <dependency id="NewPlatform.Flexberry.GIS.DataLinks" version="0.4.0-beta03.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="NewPlatform.Flexberry.GIS.Forms\bin\$configuration$\NewPlatform.Flexberry.GIS.Forms.dll" target="lib\net45\NewPlatform.Flexberry.GIS.Forms.dll" />
+    <file src="NewPlatform.Flexberry.GIS.Forms\bin\$configuration$\NewPlatform.Flexberry.GIS.Forms.xml" target="lib\net45\NewPlatform.Flexberry.GIS.Forms.xml" />
+  </files>
+</package>

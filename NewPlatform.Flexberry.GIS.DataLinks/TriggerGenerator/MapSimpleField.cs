@@ -11,7 +11,7 @@ namespace NewPlatform.Flexberry.GIS.TriggerGenerator
         
         /// <summary>
         /// </summary>
-        public MapSimpleField(Type type, string layerField, string objectPath, string prefix = "") : base(type, prefix)
+        public MapSimpleField(Type type, string layerField, string objectPath) : base(type)
         {
             LayerObjectFields = new Dictionary<string, string>();
             Add(layerField, objectPath);

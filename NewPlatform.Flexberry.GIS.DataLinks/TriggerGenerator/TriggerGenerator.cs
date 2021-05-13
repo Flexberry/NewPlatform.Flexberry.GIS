@@ -2,15 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Configuration;
     using System.Data;
     using System.Linq;
-
-    using Unity;
-
     using ICSSoft.Services;
     using ICSSoft.STORMNET;
     using ICSSoft.STORMNET.Business;
+    using Unity;
 
     public class TriggerGenerator
     {
@@ -39,8 +36,6 @@
 
                 foreach (var datalink in datalinks)
                 {
-                    LogService.LogInfo($"Генерация по настройке {datalink.__PrimaryKey} ({datalink.LayerTable}) ...");
-
                     var error = string.Empty;
                     if (string.IsNullOrEmpty(datalink.LayerTable)) error = "слой геоданных";
                     if (datalink.DataLinkParameter == null || datalink.DataLinkParameter.Count == 0
@@ -93,8 +88,6 @@
                             errors.Add($"Настройка {datalink.__PrimaryKey}: {ex.Message} {ex.InnerException?.Message}");
                         }
                     }
-
-                    LogService.LogInfo($"Генерация по настройке {datalink.__PrimaryKey} ({datalink.LayerTable}) завершена");
                 }
             }
 

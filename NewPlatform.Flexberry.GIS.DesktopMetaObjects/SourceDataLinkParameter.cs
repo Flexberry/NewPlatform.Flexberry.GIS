@@ -13,8 +13,8 @@ namespace NewPlatform.Flexberry.GIS
     using System;
     using System.Xml;
     using ICSSoft.STORMNET;
-
-
+    
+    
     // *** Start programmer edit section *** (Using statements)
 
     // *** End programmer edit section *** (Using statements)
@@ -30,26 +30,26 @@ namespace NewPlatform.Flexberry.GIS
     [AccessType(ICSSoft.STORMNET.AccessType.none)]
     [View("SourceDataLinkParameterD", new string[] {
             "Link",
-            "ObjectField as \'Поле в объекте\'",
-            "LayerField as \'Поле в таблице геоданных\'",
-            "QueryKey as \'Ключ запроса\'"}, Hidden = new string[] {
+            "ObjectField",
+            "LayerField",
+            "QueryKey"}, Hidden=new string[] {
             "Link"})]
     public class SourceDataLinkParameter : ICSSoft.STORMNET.DataObject
     {
-
+        
         private string fObjectField;
-
+        
         private string fLayerField;
-
+        
         private string fQueryKey;
-
+        
         private NewPlatform.Flexberry.GIS.SourceDataLink fLink;
-
+        
         // *** Start programmer edit section *** (SourceDataLinkParameter CustomMembers)
 
         // *** End programmer edit section *** (SourceDataLinkParameter CustomMembers)
 
-
+        
         /// <summary>
         /// ObjectField.
         /// </summary>
@@ -81,7 +81,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (SourceDataLinkParameter.ObjectField Set end)
             }
         }
-
+        
         /// <summary>
         /// LayerField.
         /// </summary>
@@ -113,7 +113,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (SourceDataLinkParameter.LayerField Set end)
             }
         }
-
+        
         /// <summary>
         /// QueryKey.
         /// </summary>
@@ -145,7 +145,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (SourceDataLinkParameter.QueryKey Set end)
             }
         }
-
+        
         /// <summary>
         /// мастеровая ссылка на шапку NewPlatform.Flexberry.GIS.SourceDataLink.
         /// </summary>
@@ -180,13 +180,13 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (SourceDataLinkParameter.Link Set end)
             }
         }
-
+        
         /// <summary>
         /// Class views container.
         /// </summary>
         public class Views
         {
-
+            
             /// <summary>
             /// "SourceDataLinkParameterD" view.
             /// </summary>
@@ -199,7 +199,7 @@ namespace NewPlatform.Flexberry.GIS
             }
         }
     }
-
+    
     /// <summary>
     /// Detail array of SourceDataLinkParameter.
     /// </summary>
@@ -208,12 +208,12 @@ namespace NewPlatform.Flexberry.GIS
     // *** End programmer edit section *** (DetailArrayDetailArrayOfSourceDataLinkParameter CustomAttributes)
     public class DetailArrayOfSourceDataLinkParameter : ICSSoft.STORMNET.DetailArray
     {
-
+        
         // *** Start programmer edit section *** (NewPlatform.Flexberry.GIS.DetailArrayOfSourceDataLinkParameter members)
 
         // *** End programmer edit section *** (NewPlatform.Flexberry.GIS.DetailArrayOfSourceDataLinkParameter members)
 
-
+        
         /// <summary>
         /// Construct detail array.
         /// </summary>
@@ -223,11 +223,11 @@ namespace NewPlatform.Flexberry.GIS
         /// <summary>
         /// Adds object with type SourceDataLinkParameter.
         /// </summary>
-        public DetailArrayOfSourceDataLinkParameter(NewPlatform.Flexberry.GIS.SourceDataLink fSourceDataLink) :
+        public DetailArrayOfSourceDataLinkParameter(NewPlatform.Flexberry.GIS.SourceDataLink fSourceDataLink) : 
                 base(typeof(SourceDataLinkParameter), ((ICSSoft.STORMNET.DataObject)(fSourceDataLink)))
         {
         }
-
+        
         public NewPlatform.Flexberry.GIS.SourceDataLinkParameter this[int index]
         {
             get
@@ -235,7 +235,7 @@ namespace NewPlatform.Flexberry.GIS
                 return ((NewPlatform.Flexberry.GIS.SourceDataLinkParameter)(this.ItemByIndex(index)));
             }
         }
-
+        
         public virtual void Add(NewPlatform.Flexberry.GIS.SourceDataLinkParameter dataobject)
         {
             this.AddObject(((ICSSoft.STORMNET.DataObject)(dataobject)));

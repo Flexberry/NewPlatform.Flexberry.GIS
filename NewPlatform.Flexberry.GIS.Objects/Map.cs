@@ -10,10 +10,13 @@
 
 namespace NewPlatform.Flexberry.GIS
 {
+    using System;
+    using System.Xml;
     using ICSSoft.STORMNET;
     using ICSSoft.STORMNET.Business.Audit;
-
-
+    using ICSSoft.STORMNET.Business.Audit.Objects;
+    
+    
     // *** Start programmer edit section *** (Using statements)
 
     // *** End programmer edit section *** (Using statements)
@@ -39,7 +42,7 @@ namespace NewPlatform.Flexberry.GIS
             "Lng as \'Долгота\'",
             "Zoom as \'Зум\'",
             "Public as \'Общая\'",
-            "CoordinateReferenceSystem as \'Система координат\'"}, Hidden = new string[] {
+            "CoordinateReferenceSystem as \'Система координат\'"}, Hidden=new string[] {
             "Lat",
             "Lng",
             "Zoom",
@@ -66,42 +69,42 @@ namespace NewPlatform.Flexberry.GIS
             "Public as \'Общая\'"})]
     public class Map : ICSSoft.STORMNET.DataObject, IDataObjectWithAuditFields
     {
-
+        
         private string fName;
-
+        
         private string fDescription;
-
+        
         private string fKeyWords;
-
+        
         private double fLat;
-
+        
         private double fLng;
-
+        
         private double fZoom;
-
+        
         private bool fPublic;
-
+        
         private int fScale;
-
+        
         private string fCoordinateReferenceSystem;
 
         private Microsoft.Spatial.Geography fBoundingBox;
-
+        
         private System.Nullable<System.DateTime> fCreateTime;
-
+        
         private string fCreator;
-
+        
         private System.Nullable<System.DateTime> fEditTime;
-
+        
         private string fEditor;
-
+        
         private NewPlatform.Flexberry.GIS.DetailArrayOfMapLayer fMapLayer;
-
+        
         // *** Start programmer edit section *** (Map CustomMembers)
 
         // *** End programmer edit section *** (Map CustomMembers)
 
-
+        
         /// <summary>
         /// Наименование карты.
         /// </summary>
@@ -134,7 +137,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.Name Set end)
             }
         }
-
+        
         /// <summary>
         /// Описание карты.
         /// </summary>
@@ -165,7 +168,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.Description Set end)
             }
         }
-
+        
         /// <summary>
         /// Ключевые слова имеющие отношение к карте или её тематике.
         /// </summary>
@@ -196,7 +199,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.KeyWords Set end)
             }
         }
-
+        
         /// <summary>
         /// Вычислимое поле для полнотекстового поиска ключевым словам, наименованию и описанию карты.
         /// </summary>
@@ -206,11 +209,11 @@ namespace NewPlatform.Flexberry.GIS
         [ICSSoft.STORMNET.NotStored()]
         [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.SQLDataService), "ISNULL(@Name@, \'\') + \' \' + ISNULL(@Description@, \'\') + \' \' + REPLACE(ISNULL(@KeyW" +
             "ords@, \'\'), \',\', \' \')")]
-        [DataServiceExpression("ICSSoft.STORMNET.Business.MSSQLDataService, ICSSoft.STORMNET.Business.MSSQLDataService", "ISNULL(@Name@, \'\') + \' \' + ISNULL(@Description@, \'\') + \' \' + REPLACE(ISNULL(@KeyW" +
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.MSSQLDataService), "ISNULL(@Name@, \'\') + \' \' + ISNULL(@Description@, \'\') + \' \' + REPLACE(ISNULL(@KeyW" +
             "ords@, \'\'), \',\', \' \')")]
-        [DataServiceExpression("ICSSoft.STORMNET.Business.PostgresDataService, ICSSoft.STORMNET.Business.PostgresDataService", "COALESCE(@Name@, \'\') || \' \' || COALESCE(@Description@, \'\') || \' \' || REPLACE(COAL" +
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.PostgresDataService), "COALESCE(@Name@, \'\') || \' \' || COALESCE(@Description@, \'\') || \' \' || REPLACE(COAL" +
             "ESCE(@KeyWords@, \'\'), \',\', \' \')")]
-        [DataServiceExpression("ICSSoft.STORMNET.Business.OracleDataService, ICSSoft.STORMNET.Business.OracleDataService", "COALESCE(@Name@, \\\'\\\') || \\\' \\\' || COALESCE(@Description@, \\\'\\\') || \\\' \\\' || REPL" +
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.OracleDataService), "COALESCE(@Name@, \\\'\\\') || \\\' \\\' || COALESCE(@Description@, \\\'\\\') || \\\' \\\' || REPL" +
             "ACE(COALESCE(@KeyWords@, \\\'\\\'), \\\',\\\', \\\' \\\')")]
         public virtual string AnyText
         {
@@ -227,7 +230,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.AnyText Set)
             }
         }
-
+        
         /// <summary>
         /// Широта центра карты.
         /// </summary>
@@ -258,7 +261,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.Lat Set end)
             }
         }
-
+        
         /// <summary>
         /// Долгота центра карты.
         /// </summary>
@@ -289,7 +292,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.Lng Set end)
             }
         }
-
+        
         /// <summary>
         /// Зум карты.
         /// </summary>
@@ -320,7 +323,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.Zoom Set end)
             }
         }
-
+        
         /// <summary>
         /// Флаг общедоступности карты.
         /// </summary>
@@ -352,7 +355,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.Public Set end)
             }
         }
-
+        
         /// <summary>
         /// Масштаб или точность данных карты.
         /// </summary>
@@ -383,7 +386,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.Scale Set end)
             }
         }
-
+        
         /// <summary>
         /// Система координат карты.
         /// </summary>
@@ -446,7 +449,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.BoundingBox Set end)
             }
         }
-
+        
         /// <summary>
         /// Время создания объекта.
         /// </summary>
@@ -477,7 +480,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.CreateTime Set end)
             }
         }
-
+        
         /// <summary>
         /// Создатель объекта.
         /// </summary>
@@ -509,7 +512,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.Creator Set end)
             }
         }
-
+        
         /// <summary>
         /// Время последнего редактирования объекта.
         /// </summary>
@@ -540,7 +543,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.EditTime Set end)
             }
         }
-
+        
         /// <summary>
         /// Последний редактор объекта.
         /// </summary>
@@ -572,7 +575,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.Editor Set end)
             }
         }
-
+        
         /// <summary>
         /// Map.
         /// </summary>
@@ -607,13 +610,13 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.MapLayer Set end)
             }
         }
-
+        
         /// <summary>
         /// Class views container.
         /// </summary>
         public class Views
         {
-
+            
             /// <summary>
             /// Представление для аудита.
             /// </summary>
@@ -624,7 +627,7 @@ namespace NewPlatform.Flexberry.GIS
                     return ICSSoft.STORMNET.Information.GetView("AuditView", typeof(NewPlatform.Flexberry.GIS.Map));
                 }
             }
-
+            
             /// <summary>
             /// Представление для прочих форм.
             /// </summary>
@@ -635,7 +638,7 @@ namespace NewPlatform.Flexberry.GIS
                     return ICSSoft.STORMNET.Information.GetView("Map", typeof(NewPlatform.Flexberry.GIS.Map));
                 }
             }
-
+            
             /// <summary>
             /// Представление для форм редактирования.
             /// </summary>
@@ -646,7 +649,7 @@ namespace NewPlatform.Flexberry.GIS
                     return ICSSoft.STORMNET.Information.GetView("MapE", typeof(NewPlatform.Flexberry.GIS.Map));
                 }
             }
-
+            
             /// <summary>
             /// Представление для списковых форм.
             /// </summary>
@@ -658,93 +661,93 @@ namespace NewPlatform.Flexberry.GIS
                 }
             }
         }
-
+        
         /// <summary>
         /// Audit class settings.
         /// </summary>
         public class AuditSettings
         {
-
+            
             /// <summary>
             /// Включён ли аудит для класса.
             /// </summary>
             public static bool AuditEnabled = true;
-
+            
             /// <summary>
             /// Использовать имя представления для аудита по умолчанию.
             /// </summary>
             public static bool UseDefaultView = false;
-
+            
             /// <summary>
             /// Включён ли аудит операции чтения.
             /// </summary>
             public static bool SelectAudit = false;
-
+            
             /// <summary>
             /// Имя представления для аудирования операции чтения.
             /// </summary>
             public static string SelectAuditViewName = "AuditView";
-
+            
             /// <summary>
             /// Включён ли аудит операции создания.
             /// </summary>
             public static bool InsertAudit = true;
-
+            
             /// <summary>
             /// Имя представления для аудирования операции создания.
             /// </summary>
             public static string InsertAuditViewName = "AuditView";
-
+            
             /// <summary>
             /// Включён ли аудит операции изменения.
             /// </summary>
             public static bool UpdateAudit = false;
-
+            
             /// <summary>
             /// Имя представления для аудирования операции изменения.
             /// </summary>
             public static string UpdateAuditViewName = "AuditView";
-
+            
             /// <summary>
             /// Включён ли аудит операции удаления.
             /// </summary>
             public static bool DeleteAudit = true;
-
+            
             /// <summary>
             /// Имя представления для аудирования операции удаления.
             /// </summary>
             public static string DeleteAuditViewName = "AuditView";
-
+            
             /// <summary>
             /// Путь к форме просмотра результатов аудита.
             /// </summary>
             public static string FormUrl = "";
-
+            
             /// <summary>
             /// Режим записи данных аудита (синхронный или асинхронный).
             /// </summary>
             public static ICSSoft.STORMNET.Business.Audit.Objects.tWriteMode WriteMode = ICSSoft.STORMNET.Business.Audit.Objects.tWriteMode.Synchronous;
-
+            
             /// <summary>
             /// Максимальная длина сохраняемого значения поля (если 0, то строка обрезаться не будет).
             /// </summary>
             public static int PrunningLength = 0;
-
+            
             /// <summary>
             /// Показывать ли пользователям в изменениях первичные ключи.
             /// </summary>
             public static bool ShowPrimaryKey = false;
-
+            
             /// <summary>
             /// Сохранять ли старое значение.
             /// </summary>
             public static bool KeepOldValue = true;
-
+            
             /// <summary>
             /// Сжимать ли сохраняемые значения.
             /// </summary>
             public static bool Compress = false;
-
+            
             /// <summary>
             /// Сохранять ли все значения атрибутов, а не только изменяемые.
             /// </summary>

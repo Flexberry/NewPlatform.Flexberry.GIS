@@ -1,8 +1,8 @@
-﻿namespace NewPlatform.Flexberry.GIS.TriggerGenerator
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+namespace NewPlatform.Flexberry.GIS.TriggerGenerator
+{
     public abstract class DataBaseHelper
     {
         private DataBaseHelper()
@@ -43,17 +43,16 @@
         /// Формирование команды удаления дополнительных опций для геоданных
         /// </summary>
         /// <param name="triggerName"></param>
-        /// <param name="functionSchema"></param>
         /// <returns></returns>
-        public abstract string DropSpatialTriggersCommand(string triggerName, string functionSchema);
+        public abstract string DropSpatialTriggersCommand(string triggerName);
 
         /// <summary>
         /// </summary>
-        public abstract string CommandTextForTriggerForSpatialRecordsCount(string layer, string triggerPrefix, string triggerName, Dictionary<string, string> linkParams, Chain chain, string owner = "", string functionSchema = "");
+        public abstract string CommandTextForTriggerForSpatialRecordsCount(string layer, string triggerPrefix, string triggerName, Dictionary<string, string> linkParams, Chain chain, string owner = "");
         
         /// <summary>
         /// </summary>
-        public abstract string CommandTextForTriggerForSpatialRecordsCountOnDelete(string layer, string triggerName, Dictionary<string, string> linkParams, Chain chain, string owner = "", string functionSchema = "");
+        public abstract string CommandTextForTriggerForSpatialRecordsCountOnDelete(string layer, string triggerName, Dictionary<string, string> linkParams, Chain chain, string owner = "");
 
         /// <summary>
         /// </summary>
@@ -67,13 +66,13 @@
         /// </summary>
         public abstract string CommandTextForTriggerForUpdateSpatialObject(string layer, string triggerName, 
             Dictionary<string, string> linkParams, bool clearWithoutLink, Chain chain,
-            List<MapExpressionField> expressionFields, Dictionary<string, string> simpleFields, string owner = "", string functionSchema = "");
+            List<MapExpressionField> expressionFields, Dictionary<string, string> simpleFields, string owner = "");
 
         /// <summary>
         /// </summary>
         public abstract string CommandTextForTriggerForInsertSpatialObject(string layer, string triggerName,
             Dictionary<string, string> linkParams, bool clearWithoutLink, Chain chain,
-            List<MapExpressionField> expressionFields, Dictionary<string, string> simpleFields, string owner = "", string functionSchema = "");
+            List<MapExpressionField> expressionFields, Dictionary<string, string> simpleFields, string owner = "");
 
         /// <summary>
         /// </summary>
@@ -83,12 +82,12 @@
         /// </summary>
         public abstract string DeleteTrigger(string layer, string triggerName, Type rootType,
             Dictionary<string, string> linkParams, List<MapExpressionField> expressionFields,
-            Dictionary<string, MapSimpleField> simpleFields, string owner = "", string functionSchema = "");
+            Dictionary<string, MapSimpleField> simpleFields, string owner = "");
 
         /// <summary>
         /// </summary>
         public abstract string UpdateTrigger(string layer, string triggerName, Type rootType,
-            Dictionary<string, string> linkParams, string fromTableName, MapField field, string setCommand, string owner = "", string functionSchema = "");
+            Dictionary<string, string> linkParams, string fromTableName, MapField field, string setCommand, string owner = "");
 
         /// <summary>
         /// </summary>
