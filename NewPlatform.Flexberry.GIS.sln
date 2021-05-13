@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexberryGIS(Objects)", "Objects\FlexberryGIS(Objects).csproj", "{58D64809-925A-4B44-8403-8E3A14D7BCF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewPlatform.Flexberry.GIS.Objects", "Objects\NewPlatform.Flexberry.GIS.Objects.csproj", "{58D64809-925A-4B44-8403-8E3A14D7BCF8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet Package Properties", "NuGet Package Properties", "{00D7F4BE-750C-4DB2-8C79-BC3AAFA6380D}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet Package Properties", 
 		NewPlatform.Flexberry.GIS.Objects.nuspec = NewPlatform.Flexberry.GIS.Objects.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexberryGIS(Forms)", "Forms\FlexberryGIS(Forms).csproj", "{FC2621C8-D7F6-46A0-B7F3-26BBF0834CA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewPlatform.Flexberry.GIS.Forms", "Forms\NewPlatform.Flexberry.GIS.Forms.csproj", "{FC2621C8-D7F6-46A0-B7F3-26BBF0834CA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexberryGIS.DataLinks(Objects)", "DataLinks\FlexberryGIS.DataLinks(Objects).csproj", "{446F85E9-1452-49BD-BEC4-AF168DA7FE0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewPlatform.Flexberry.GIS.DataLinks", "DataLinks\NewPlatform.Flexberry.GIS.DataLinks.csproj", "{446F85E9-1452-49BD-BEC4-AF168DA7FE0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GisDesktopMeta(Objects)", "GisDesktopMeta(Objects)\GisDesktopMeta(Objects).csproj", "{6593236A-6A4E-45BD-9D42-ED3A157FD5F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewPlatform.Flexberry.GIS.DesktopMetaObjects", "GisDesktopMeta(Objects)\NewPlatform.Flexberry.GIS.DesktopMetaObjects.csproj", "{6593236A-6A4E-45BD-9D42-ED3A157FD5F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
