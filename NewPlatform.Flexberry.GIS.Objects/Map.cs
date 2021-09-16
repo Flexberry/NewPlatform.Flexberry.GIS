@@ -64,7 +64,7 @@ namespace NewPlatform.Flexberry.GIS
             "Lng as \'Долгота\'",
             "Zoom as \'Зум\'",
             "Public as \'Общая\'"})]
-    public class Map : ICSSoft.STORMNET.DataObject, IDataObjectWithAuditFields
+    public class Map : ICSSoft.STORMNET.DataObject, NewPlatform.Flexberry.GIS.IPublicOwner, IDataObjectWithAuditFields
     {
 
         private string fName;
@@ -86,6 +86,8 @@ namespace NewPlatform.Flexberry.GIS
         private string fCoordinateReferenceSystem;
 
         private Microsoft.Spatial.Geography fBoundingBox;
+
+        private string fOwner;
 
         private System.Nullable<System.DateTime> fCreateTime;
 
@@ -448,6 +450,38 @@ namespace NewPlatform.Flexberry.GIS
         }
 
         /// <summary>
+        /// Owner.
+        /// </summary>
+        // *** Start programmer edit section *** (Map.Owner CustomAttributes)
+
+        // *** End programmer edit section *** (Map.Owner CustomAttributes)
+        [StrLen(255)]
+        public virtual string Owner
+        {
+            get
+            {
+                // *** Start programmer edit section *** (Map.Owner Get start)
+
+                // *** End programmer edit section *** (Map.Owner Get start)
+                string result = this.fOwner;
+                // *** Start programmer edit section *** (Map.Owner Get end)
+
+                // *** End programmer edit section *** (Map.Owner Get end)
+                return result;
+            }
+            set
+            {
+                // *** Start programmer edit section *** (Map.Owner Set start)
+
+                // *** End programmer edit section *** (Map.Owner Set start)
+                this.fOwner = value;
+                // *** Start programmer edit section *** (Map.Owner Set end)
+
+                // *** End programmer edit section *** (Map.Owner Set end)
+            }
+        }
+
+        /// <summary>
         /// Время создания объекта.
         /// </summary>
         // *** Start programmer edit section *** (Map.CreateTime CustomAttributes)
@@ -698,7 +732,7 @@ namespace NewPlatform.Flexberry.GIS
             /// <summary>
             /// Включён ли аудит операции изменения.
             /// </summary>
-            public static bool UpdateAudit = false;
+            public static bool UpdateAudit = true;
 
             /// <summary>
             /// Имя представления для аудирования операции изменения.
