@@ -73,7 +73,7 @@ namespace NewPlatform.Flexberry.GIS
             "Description as \'Описание\'",
             "Type as \'Тип\'",
             "Parent.Name as \'Родитель\'"})]
-    public class MapLayer : ICSSoft.STORMNET.DataObject, IDataObjectWithAuditFields
+    public class MapLayer : ICSSoft.STORMNET.DataObject, NewPlatform.Flexberry.GIS.IPublicOwner, IDataObjectWithAuditFields
     {
 
         private string fName;
@@ -95,6 +95,10 @@ namespace NewPlatform.Flexberry.GIS
         private string fCoordinateReferenceSystem;
 
         private Microsoft.Spatial.Geography fBoundingBox;
+
+        private bool fPublic;
+
+        private string fOwner;
 
         private System.Nullable<System.DateTime> fCreateTime;
 
@@ -461,6 +465,70 @@ namespace NewPlatform.Flexberry.GIS
         }
 
         /// <summary>
+        /// Флаг общедоступности карты.
+        /// </summary>
+        // *** Start programmer edit section *** (MapLayer.Public CustomAttributes)
+
+        // *** End programmer edit section *** (MapLayer.Public CustomAttributes)
+        [NotNull()]
+        public virtual bool Public
+        {
+            get
+            {
+                // *** Start programmer edit section *** (MapLayer.Public Get start)
+
+                // *** End programmer edit section *** (MapLayer.Public Get start)
+                bool result = this.fPublic;
+                // *** Start programmer edit section *** (MapLayer.Public Get end)
+
+                // *** End programmer edit section *** (MapLayer.Public Get end)
+                return result;
+            }
+            set
+            {
+                // *** Start programmer edit section *** (MapLayer.Public Set start)
+
+                // *** End programmer edit section *** (MapLayer.Public Set start)
+                this.fPublic = value;
+                // *** Start programmer edit section *** (MapLayer.Public Set end)
+
+                // *** End programmer edit section *** (MapLayer.Public Set end)
+            }
+        }
+
+        /// <summary>
+        /// Owner.
+        /// </summary>
+        // *** Start programmer edit section *** (MapLayer.Owner CustomAttributes)
+
+        // *** End programmer edit section *** (MapLayer.Owner CustomAttributes)
+        [StrLen(255)]
+        public virtual string Owner
+        {
+            get
+            {
+                // *** Start programmer edit section *** (MapLayer.Owner Get start)
+
+                // *** End programmer edit section *** (MapLayer.Owner Get start)
+                string result = this.fOwner;
+                // *** Start programmer edit section *** (MapLayer.Owner Get end)
+
+                // *** End programmer edit section *** (MapLayer.Owner Get end)
+                return result;
+            }
+            set
+            {
+                // *** Start programmer edit section *** (MapLayer.Owner Set start)
+
+                // *** End programmer edit section *** (MapLayer.Owner Set start)
+                this.fOwner = value;
+                // *** Start programmer edit section *** (MapLayer.Owner Set end)
+
+                // *** End programmer edit section *** (MapLayer.Owner Set end)
+            }
+        }
+
+        /// <summary>
         /// Время создания объекта.
         /// </summary>
         // *** Start programmer edit section *** (MapLayer.CreateTime CustomAttributes)
@@ -779,7 +847,7 @@ namespace NewPlatform.Flexberry.GIS
             /// <summary>
             /// Включён ли аудит операции изменения.
             /// </summary>
-            public static bool UpdateAudit = false;
+            public static bool UpdateAudit = true;
 
             /// <summary>
             /// Имя представления для аудирования операции изменения.
