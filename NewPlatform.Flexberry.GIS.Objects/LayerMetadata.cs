@@ -10,10 +10,13 @@
 
 namespace NewPlatform.Flexberry.GIS
 {
+    using System;
+    using System.Xml;
     using ICSSoft.STORMNET;
     using ICSSoft.STORMNET.Business.Audit;
-
-
+    using ICSSoft.STORMNET.Business.Audit.Objects;
+    
+    
     // *** Start programmer edit section *** (Using statements)
 
     // *** End programmer edit section *** (Using statements)
@@ -53,38 +56,38 @@ namespace NewPlatform.Flexberry.GIS
             "Type as \'Тип\'"})]
     public class LayerMetadata : ICSSoft.STORMNET.DataObject, IDataObjectWithAuditFields
     {
-
+        
         private string fName;
-
+        
         private string fDescription;
-
+        
         private string fKeyWords;
-
+        
         private string fType;
-
+        
         private string fSettings;
-
+        
         private int fScale;
-
+        
         private string fCoordinateReferenceSystem;
-
+        
         private Microsoft.Spatial.Geography fBoundingBox;
-
+        
         private System.Nullable<System.DateTime> fCreateTime;
-
+        
         private string fCreator;
-
+        
         private System.Nullable<System.DateTime> fEditTime;
-
+        
         private string fEditor;
-
+        
         private NewPlatform.Flexberry.GIS.DetailArrayOfLinkMetadata fLinkMetadata;
-
+        
         // *** Start programmer edit section *** (LayerMetadata CustomMembers)
 
         // *** End programmer edit section *** (LayerMetadata CustomMembers)
 
-
+        
         /// <summary>
         /// Наименование слоя.
         /// </summary>
@@ -117,7 +120,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.Name Set end)
             }
         }
-
+        
         /// <summary>
         /// Описание слоя.
         /// </summary>
@@ -148,7 +151,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.Description Set end)
             }
         }
-
+        
         /// <summary>
         /// Ключевые слова имеющие отношение к слою или его тематике.
         /// </summary>
@@ -179,7 +182,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.KeyWords Set end)
             }
         }
-
+        
         /// <summary>
         /// Вычислимое поле для полнотекстового поиска ключевым словам, наименованию и описанию карты.
         /// </summary>
@@ -189,18 +192,18 @@ namespace NewPlatform.Flexberry.GIS
         [ICSSoft.STORMNET.NotStored()]
         [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.SQLDataService), "ISNULL(@Name@, \'\') + \' \' + ISNULL(@Description@, \'\') + \' \' + REPLACE(ISNULL(@KeyW" +
             "ords@, \'\'), \',\', \' \')")]
-        [DataServiceExpression("ICSSoft.STORMNET.Business.MSSQLDataService, ICSSoft.STORMNET.Business.MSSQLDataService", "ISNULL(@Name@, \'\') + \' \' + ISNULL(@Description@, \'\') + \' \' + REPLACE(ISNULL(@KeyW" +
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.MSSQLDataService), "ISNULL(@Name@, \'\') + \' \' + ISNULL(@Description@, \'\') + \' \' + REPLACE(ISNULL(@KeyW" +
             "ords@, \'\'), \',\', \' \')")]
-        [DataServiceExpression("ICSSoft.STORMNET.Business.PostgresDataService, ICSSoft.STORMNET.Business.PostgresDataService", "COALESCE(@Name@, \'\') || \' \' || COALESCE(@Description@, \'\') || \' \' || REPLACE(COAL" +
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.PostgresDataService), "COALESCE(@Name@, \'\') || \' \' || COALESCE(@Description@, \'\') || \' \' || REPLACE(COAL" +
             "ESCE(@KeyWords@, \'\'), \',\', \' \')")]
-        [DataServiceExpression("ICSSoft.STORMNET.Business.OracleDataService, ICSSoft.STORMNET.Business.PostgresDataService", "COALESCE(@Name@, \\\'\\\') || \\\' \\\' || COALESCE(@Description@, \\\'\\\') || \\\' \\\' || REPL" +
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.OracleDataService), "COALESCE(@Name@, \\\'\\\') || \\\' \\\' || COALESCE(@Description@, \\\'\\\') || \\\' \\\' || REPL" +
             "ACE(COALESCE(@KeyWords@, \\\'\\\'), \\\',\\\', \\\' \\\')")]
         public virtual string AnyText
         {
             get
             {
                 // *** Start programmer edit section *** (LayerMetadata.AnyText Get)
-                return $"{Name ?? string.Empty} {Description ?? string.Empty} {(KeyWords ?? string.Empty).Replace(",", " ")}";
+                return null;
                 // *** End programmer edit section *** (LayerMetadata.AnyText Get)
             }
             set
@@ -210,7 +213,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.AnyText Set)
             }
         }
-
+        
         /// <summary>
         /// Тип слоя.
         /// </summary>
@@ -243,7 +246,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.Type Set end)
             }
         }
-
+        
         /// <summary>
         /// Настройки слоя.
         /// </summary>
@@ -274,7 +277,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.Settings Set end)
             }
         }
-
+        
         /// <summary>
         /// Масштаб или точность данных слоя.
         /// </summary>
@@ -305,7 +308,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.Scale Set end)
             }
         }
-
+        
         /// <summary>
         /// Система координат слоя.
         /// </summary>
@@ -337,7 +340,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.CoordinateReferenceSystem Set end)
             }
         }
-
+        
         /// <summary>
         /// Границы слоя.
         /// </summary>
@@ -368,7 +371,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.BoundingBox Set end)
             }
         }
-
+        
         /// <summary>
         /// Время создания объекта.
         /// </summary>
@@ -399,7 +402,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.CreateTime Set end)
             }
         }
-
+        
         /// <summary>
         /// Создатель объекта.
         /// </summary>
@@ -431,7 +434,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.Creator Set end)
             }
         }
-
+        
         /// <summary>
         /// Время последнего редактирования объекта.
         /// </summary>
@@ -462,7 +465,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.EditTime Set end)
             }
         }
-
+        
         /// <summary>
         /// Последний редактор объекта.
         /// </summary>
@@ -494,7 +497,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.Editor Set end)
             }
         }
-
+        
         /// <summary>
         /// Layer metadata.
         /// </summary>
@@ -529,13 +532,13 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.LinkMetadata Set end)
             }
         }
-
+        
         /// <summary>
         /// Class views container.
         /// </summary>
         public class Views
         {
-
+            
             /// <summary>
             /// Представление для аудита.
             /// </summary>
@@ -546,7 +549,7 @@ namespace NewPlatform.Flexberry.GIS
                     return ICSSoft.STORMNET.Information.GetView("AuditView", typeof(NewPlatform.Flexberry.GIS.LayerMetadata));
                 }
             }
-
+            
             /// <summary>
             /// Представление для форм редактирования.
             /// </summary>
@@ -557,7 +560,7 @@ namespace NewPlatform.Flexberry.GIS
                     return ICSSoft.STORMNET.Information.GetView("LayerMetadataE", typeof(NewPlatform.Flexberry.GIS.LayerMetadata));
                 }
             }
-
+            
             /// <summary>
             /// Представление для списковых форм.
             /// </summary>
@@ -569,93 +572,93 @@ namespace NewPlatform.Flexberry.GIS
                 }
             }
         }
-
+        
         /// <summary>
         /// Audit class settings.
         /// </summary>
         public class AuditSettings
         {
-
+            
             /// <summary>
             /// Включён ли аудит для класса.
             /// </summary>
             public static bool AuditEnabled = true;
-
+            
             /// <summary>
             /// Использовать имя представления для аудита по умолчанию.
             /// </summary>
             public static bool UseDefaultView = false;
-
+            
             /// <summary>
             /// Включён ли аудит операции чтения.
             /// </summary>
             public static bool SelectAudit = false;
-
+            
             /// <summary>
             /// Имя представления для аудирования операции чтения.
             /// </summary>
             public static string SelectAuditViewName = "AuditView";
-
+            
             /// <summary>
             /// Включён ли аудит операции создания.
             /// </summary>
             public static bool InsertAudit = true;
-
+            
             /// <summary>
             /// Имя представления для аудирования операции создания.
             /// </summary>
             public static string InsertAuditViewName = "AuditView";
-
+            
             /// <summary>
             /// Включён ли аудит операции изменения.
             /// </summary>
             public static bool UpdateAudit = true;
-
+            
             /// <summary>
             /// Имя представления для аудирования операции изменения.
             /// </summary>
             public static string UpdateAuditViewName = "AuditView";
-
+            
             /// <summary>
             /// Включён ли аудит операции удаления.
             /// </summary>
             public static bool DeleteAudit = true;
-
+            
             /// <summary>
             /// Имя представления для аудирования операции удаления.
             /// </summary>
             public static string DeleteAuditViewName = "AuditView";
-
+            
             /// <summary>
             /// Путь к форме просмотра результатов аудита.
             /// </summary>
             public static string FormUrl = "";
-
+            
             /// <summary>
             /// Режим записи данных аудита (синхронный или асинхронный).
             /// </summary>
             public static ICSSoft.STORMNET.Business.Audit.Objects.tWriteMode WriteMode = ICSSoft.STORMNET.Business.Audit.Objects.tWriteMode.Synchronous;
-
+            
             /// <summary>
             /// Максимальная длина сохраняемого значения поля (если 0, то строка обрезаться не будет).
             /// </summary>
             public static int PrunningLength = 0;
-
+            
             /// <summary>
             /// Показывать ли пользователям в изменениях первичные ключи.
             /// </summary>
             public static bool ShowPrimaryKey = false;
-
+            
             /// <summary>
             /// Сохранять ли старое значение.
             /// </summary>
             public static bool KeepOldValue = true;
-
+            
             /// <summary>
             /// Сжимать ли сохраняемые значения.
             /// </summary>
             public static bool Compress = false;
-
+            
             /// <summary>
             /// Сохранять ли все значения атрибутов, а не только изменяемые.
             /// </summary>

@@ -13,8 +13,8 @@ namespace NewPlatform.Flexberry.GIS
     using System;
     using System.Xml;
     using ICSSoft.STORMNET;
-
-
+    
+    
     // *** Start programmer edit section *** (Using statements)
 
     // *** End programmer edit section *** (Using statements)
@@ -27,37 +27,37 @@ namespace NewPlatform.Flexberry.GIS
 
     // *** End programmer edit section *** (LinkParameter CustomAttributes)
     [AutoAltered()]
-    [AccessType(ICSSoft.STORMNET.AccessType.@this)]
+    [AccessType(ICSSoft.STORMNET.AccessType.none)]
     [View("LinkParameterD", new string[] {
             "ObjectField as \'Поле объекта\'",
             "LayerField as \'Поле слоя\'",
             "Expression as \'Выражение\'",
             "QueryKey as \'Ключ запроса\'",
             "LinkField as \'Ключ связи\'",
-            "LayerLink as \'Связь\'"}, Hidden = new string[] {
+            "LayerLink as \'Связь\'"}, Hidden=new string[] {
             "Expression",
-            "LayerLink",
-            "LinkField"})]
+            "LinkField",
+            "LayerLink"})]
     public class LinkParameter : ICSSoft.STORMNET.DataObject
     {
-
+        
         private string fObjectField;
-
+        
         private string fLayerField;
-
+        
         private string fExpression;
-
+        
         private string fQueryKey;
-
+        
         private bool fLinkField = false;
-
+        
         private NewPlatform.Flexberry.GIS.LayerLink fLayerLink;
-
+        
         // *** Start programmer edit section *** (LinkParameter CustomMembers)
 
         // *** End programmer edit section *** (LinkParameter CustomMembers)
 
-
+        
         /// <summary>
         /// ObjectField.
         /// </summary>
@@ -89,7 +89,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LinkParameter.ObjectField Set end)
             }
         }
-
+        
         /// <summary>
         /// LayerField.
         /// </summary>
@@ -121,7 +121,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LinkParameter.LayerField Set end)
             }
         }
-
+        
         /// <summary>
         /// Expression.
         /// </summary>
@@ -153,7 +153,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LinkParameter.Expression Set end)
             }
         }
-
+        
         /// <summary>
         /// QueryKey.
         /// </summary>
@@ -185,7 +185,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LinkParameter.QueryKey Set end)
             }
         }
-
+        
         /// <summary>
         /// LinkField.
         /// </summary>
@@ -216,7 +216,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LinkParameter.LinkField Set end)
             }
         }
-
+        
         /// <summary>
         /// мастеровая ссылка на шапку NewPlatform.Flexberry.GIS.LayerLink.
         /// </summary>
@@ -251,13 +251,13 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LinkParameter.LayerLink Set end)
             }
         }
-
+        
         /// <summary>
         /// Class views container.
         /// </summary>
         public class Views
         {
-
+            
             /// <summary>
             /// "LinkParameterD" view.
             /// </summary>
@@ -270,7 +270,7 @@ namespace NewPlatform.Flexberry.GIS
             }
         }
     }
-
+    
     /// <summary>
     /// Detail array of LinkParameter.
     /// </summary>
@@ -279,12 +279,12 @@ namespace NewPlatform.Flexberry.GIS
     // *** End programmer edit section *** (DetailArrayDetailArrayOfLinkParameter CustomAttributes)
     public class DetailArrayOfLinkParameter : ICSSoft.STORMNET.DetailArray
     {
-
+        
         // *** Start programmer edit section *** (NewPlatform.Flexberry.GIS.DetailArrayOfLinkParameter members)
 
         // *** End programmer edit section *** (NewPlatform.Flexberry.GIS.DetailArrayOfLinkParameter members)
 
-
+        
         /// <summary>
         /// Construct detail array.
         /// </summary>
@@ -294,11 +294,11 @@ namespace NewPlatform.Flexberry.GIS
         /// <summary>
         /// Adds object with type LinkParameter.
         /// </summary>
-        public DetailArrayOfLinkParameter(NewPlatform.Flexberry.GIS.LayerLink fLayerLink) :
+        public DetailArrayOfLinkParameter(NewPlatform.Flexberry.GIS.LayerLink fLayerLink) : 
                 base(typeof(LinkParameter), ((ICSSoft.STORMNET.DataObject)(fLayerLink)))
         {
         }
-
+        
         public NewPlatform.Flexberry.GIS.LinkParameter this[int index]
         {
             get
@@ -306,7 +306,7 @@ namespace NewPlatform.Flexberry.GIS
                 return ((NewPlatform.Flexberry.GIS.LinkParameter)(this.ItemByIndex(index)));
             }
         }
-
+        
         public virtual void Add(NewPlatform.Flexberry.GIS.LinkParameter dataobject)
         {
             this.AddObject(((ICSSoft.STORMNET.DataObject)(dataobject)));
