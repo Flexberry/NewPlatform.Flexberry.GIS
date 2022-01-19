@@ -339,14 +339,14 @@ namespace NewPlatform.Flexberry.GIS
 
         // *** End programmer edit section *** (Map.AnyText CustomAttributes)
         [ICSSoft.STORMNET.NotStored()]
-        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.MSSQLDataService, ICSSoft.STORMNET.Business.MSSQLDataService), "ISNULL(@Name@, \'\') + \' \' + ISNULL(@Description@, \'\') + \' \' + REPLACE(ISNULL(@KeyW" +
-            "ords@, \'\'), \',\', \' \')")]
-        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.OracleDataService, ICSSoft.STORMNET.Business.MSSQLDataService), "COALESCE(@Name@, \\\'\\\') || \\\' \\\' || COALESCE(@Description@, \\\'\\\') || \\\' \\\' || REPL" +
-            "ACE(COALESCE(@KeyWords@, \\\'\\\'), \\\',\\\', \\\' \\\')")]
-        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.PostgresDataService, ICSSoft.STORMNET.Business.PostgresDataService), "COALESCE(@Name@, \'\') || \' \' || COALESCE(@Description@, \'\') || \' \' || REPLACE(COAL" +
-            "ESCE(@KeyWords@, \'\'), \',\', \' \')")]
         [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.SQLDataService), "ISNULL(@Name@, \'\') + \' \' + ISNULL(@Description@, \'\') + \' \' + REPLACE(ISNULL(@KeyW" +
             "ords@, \'\'), \',\', \' \')")]
+        [DataServiceExpression("ICSSoft.STORMNET.Business.MSSQLDataService, ICSSoft.STORMNET.Business.MSSQLDataService", "ISNULL(@Name@, \'\') + \' \' + ISNULL(@Description@, \'\') + \' \' + REPLACE(ISNULL(@KeyW" +
+            "ords@, \'\'), \',\', \' \')")]
+        [DataServiceExpression("ICSSoft.STORMNET.Business.OracleDataService, ICSSoft.STORMNET.Business.MSSQLDataService", "COALESCE(@Name@, \\\'\\\') || \\\' \\\' || COALESCE(@Description@, \\\'\\\') || \\\' \\\' || REPL" +
+            "ACE(COALESCE(@KeyWords@, \\\'\\\'), \\\',\\\', \\\' \\\')")]
+        [DataServiceExpression("ICSSoft.STORMNET.Business.PostgresDataService, ICSSoft.STORMNET.Business.PostgresDataService", "COALESCE(@Name@, \'\') || \' \' || COALESCE(@Description@, \'\') || \' \' || REPLACE(COAL" +
+            "ESCE(@KeyWords@, \'\'), \',\', \' \')")]
         public virtual string AnyText
         {
             get
