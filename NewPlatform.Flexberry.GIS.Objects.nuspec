@@ -14,7 +14,7 @@
     <description>Flexberry GIS Objects package.</description>
     <releaseNotes>
       Added
-      - IPublicOwner and set UpdateAudit = true
+      - Picture field to map model
     </releaseNotes>
     <copyright>Copyright New Platform Ltd 2020</copyright>
     <tags>Flexberry GIS</tags>
