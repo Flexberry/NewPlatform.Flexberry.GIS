@@ -35,7 +35,8 @@ namespace NewPlatform.Flexberry.GIS
             "Creator as \'Создатель\'",
             "CreateTime as \'Время создания\'",
             "Editor as \'Редактор\'",
-            "EditTime as \'Время редактирования\'"})]
+            "EditTime as \'Время редактирования\'",
+            "EditTimeMapLayers"})]
     [View("Map", new string[] {
             "Name as \'Наименование\'",
             "Lat as \'Широта\'",
@@ -103,6 +104,8 @@ namespace NewPlatform.Flexberry.GIS
         private string fOwner;
         
         private string fPicture;
+        
+        private System.Nullable<System.DateTime> fEditTimeMapLayers;
         
         private NewPlatform.Flexberry.GIS.DetailArrayOfMapLayer fMapLayer;
         
@@ -331,7 +334,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.KeyWords Set end)
             }
         }
-        
+
         /// <summary>
         /// Вычислимое поле для полнотекстового поиска ключевым словам, наименованию и описанию карты.
         /// </summary>
@@ -643,6 +646,37 @@ namespace NewPlatform.Flexberry.GIS
                 // *** Start programmer edit section *** (Map.Picture Set end)
 
                 // *** End programmer edit section *** (Map.Picture Set end)
+            }
+        }
+        
+        /// <summary>
+        /// EditTimeMapLayers.
+        /// </summary>
+        // *** Start programmer edit section *** (Map.EditTimeMapLayers CustomAttributes)
+
+        // *** End programmer edit section *** (Map.EditTimeMapLayers CustomAttributes)
+        public virtual System.Nullable<System.DateTime> EditTimeMapLayers
+        {
+            get
+            {
+                // *** Start programmer edit section *** (Map.EditTimeMapLayers Get start)
+
+                // *** End programmer edit section *** (Map.EditTimeMapLayers Get start)
+                System.Nullable<System.DateTime> result = this.fEditTimeMapLayers;
+                // *** Start programmer edit section *** (Map.EditTimeMapLayers Get end)
+
+                // *** End programmer edit section *** (Map.EditTimeMapLayers Get end)
+                return result;
+            }
+            set
+            {
+                // *** Start programmer edit section *** (Map.EditTimeMapLayers Set start)
+
+                // *** End programmer edit section *** (Map.EditTimeMapLayers Set start)
+                this.fEditTimeMapLayers = value;
+                // *** Start programmer edit section *** (Map.EditTimeMapLayers Set end)
+
+                // *** End programmer edit section *** (Map.EditTimeMapLayers Set end)
             }
         }
         
