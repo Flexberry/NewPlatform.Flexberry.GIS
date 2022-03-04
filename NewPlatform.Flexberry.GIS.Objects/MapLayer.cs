@@ -46,9 +46,11 @@ namespace NewPlatform.Flexberry.GIS
             "CoordinateReferenceSystem as \'Система координат\'",
             "BoundingBox as \'Граница\'",
             "Parent as \'Родитель\'",
-            "Map as \'Карта\'"}, Hidden = new string[] {
+            "Map as \'Карта\'",
+            "SecurityKey"}, Hidden = new string[] {
             "Parent",
-            "Map"})]
+            "Map",
+            "SecurityKey"})]
     [AssociatedDetailViewAttribute("MapLayerD", "LayerLink", "LayerLinkD", true, "", "", true, new string[] {
             ""})]
     [View("MapLayerE", new string[] {
@@ -63,7 +65,9 @@ namespace NewPlatform.Flexberry.GIS
             "CoordinateReferenceSystem as \'Система координат\'",
             "BoundingBox as \'Граница\'",
             "Parent as \'Родитель\'",
-            "Map as \'Карта\'"})]
+            "Map as \'Карта\'",
+            "SecurityKey"}, Hidden = new string[] {
+            "SecurityKey"})]
     [AssociatedDetailViewAttribute("MapLayerE", "LayerLink", "LayerLinkD", true, "", "", true, new string[] {
             ""})]
     [MasterViewDefineAttribute("MapLayerE", "Parent", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "Name")]
@@ -99,6 +103,8 @@ namespace NewPlatform.Flexberry.GIS
         private bool fPublic;
 
         private string fOwner;
+
+        private string fSecurityKey;
 
         private System.Nullable<System.DateTime> fCreateTime;
 
@@ -525,6 +531,38 @@ namespace NewPlatform.Flexberry.GIS
                 // *** Start programmer edit section *** (MapLayer.Owner Set end)
 
                 // *** End programmer edit section *** (MapLayer.Owner Set end)
+            }
+        }
+
+        /// <summary>
+        /// SecurityKey.
+        /// </summary>
+        // *** Start programmer edit section *** (MapLayer.SecurityKey CustomAttributes)
+
+        // *** End programmer edit section *** (MapLayer.SecurityKey CustomAttributes)
+        [StrLen(255)]
+        public virtual string SecurityKey
+        {
+            get
+            {
+                // *** Start programmer edit section *** (MapLayer.SecurityKey Get start)
+
+                // *** End programmer edit section *** (MapLayer.SecurityKey Get start)
+                string result = this.fSecurityKey;
+                // *** Start programmer edit section *** (MapLayer.SecurityKey Get end)
+
+                // *** End programmer edit section *** (MapLayer.SecurityKey Get end)
+                return result;
+            }
+            set
+            {
+                // *** Start programmer edit section *** (MapLayer.SecurityKey Set start)
+
+                // *** End programmer edit section *** (MapLayer.SecurityKey Set start)
+                this.fSecurityKey = value;
+                // *** Start programmer edit section *** (MapLayer.SecurityKey Set end)
+
+                // *** End programmer edit section *** (MapLayer.SecurityKey Set end)
             }
         }
 
