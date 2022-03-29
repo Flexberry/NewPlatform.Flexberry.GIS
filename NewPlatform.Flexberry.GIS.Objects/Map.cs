@@ -32,6 +32,13 @@ namespace NewPlatform.Flexberry.GIS
     [AccessType(ICSSoft.STORMNET.AccessType.@this)]
     [View("AuditView", new string[] {
             "Name as \'Наименование\'",
+            "Description as \'Описание\'",
+            "Lat as \'Центр карты (широта)\'",
+            "Lng as \'Центр карты (долгота)\'",
+            "Zoom as \'Зум карты\'",
+            "Public as \'Публичная карта\'",
+            "CoordinateReferenceSystem as \'Система координат\'",
+            "Picture as \'Изображение для карты\'",
             "Creator as \'Создатель\'",
             "CreateTime as \'Время создания\'",
             "Editor as \'Редактор\'",
