@@ -13,6 +13,8 @@ namespace NewPlatform.Flexberry.GIS
     using System;
     using System.Xml;
     using ICSSoft.STORMNET;
+    using ICSSoft.STORMNET.Business.Audit;
+    using ICSSoft.STORMNET.Business.Audit.Objects;
     
     
     // *** Start programmer edit section *** (Using statements)
@@ -27,9 +29,15 @@ namespace NewPlatform.Flexberry.GIS
 
     // *** End programmer edit section *** (BackgroundLayer CustomAttributes)
     [AutoAltered()]
-    [AccessType(ICSSoft.STORMNET.AccessType.none)]
-    [View("BackgroundLayerE", new string[0])]
-    [View("BackgroundLayerL", new string[] {
+    [Caption("Background layer")]
+    [AccessType(ICSSoft.STORMNET.AccessType.@this)]
+    [View("AuditView", new string[] {
+            "Name as \'Наименование\'",
+            "Creator as \'Создатель\'",
+            "CreateTime as \'Время создания\'",
+            "Editor as \'Редактор\'",
+            "EditTime as \'Время редактирования\'"})]
+    [View("BackgroundLayerD", new string[] {
             "Name",
             "Description",
             "KeyWords",
@@ -44,7 +52,23 @@ namespace NewPlatform.Flexberry.GIS
             "Public",
             "Owner",
             "SecurityKey"})]
-    public class BackgroundLayer : ICSSoft.STORMNET.DataObject
+    [View("BackgroundLayerE", new string[] {
+            "Name as \'Наименование\'",
+            "Description as \'Описание\'",
+            "KeyWords as \'Ключевые слова\'",
+            "Index as \'Индекс\'",
+            "Visibility as \'Видимость\'",
+            "Type as \'Тип\'",
+            "Settings as \'Настройки\'",
+            "Scale as \'Масштаб\'",
+            "CoordinateReferenceSystem as \'Система координат\'",
+            "BoundingBox as \'Граница\'",
+            "SecurityKey"})]
+    [View("BackgroundLayerL", new string[] {
+            "Name as \'Наименование\'",
+            "Description as \'Описание\'",
+            "Type as \'Тип\'"})]
+    public class BackgroundLayer : ICSSoft.STORMNET.DataObject, IDataObjectWithAuditFields
     {
         
         private string fName;
@@ -87,7 +111,7 @@ namespace NewPlatform.Flexberry.GIS
 
         
         /// <summary>
-        /// Name.
+        /// Наименование слоя.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.Name CustomAttributes)
 
@@ -119,7 +143,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// Description.
+        /// Описание слоя.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.Description CustomAttributes)
 
@@ -150,7 +174,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// KeyWords.
+        /// Ключевые слова имеющие отношение к слою и его тематике.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.KeyWords CustomAttributes)
 
@@ -181,12 +205,18 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// AnyText.
+        /// Вычислимое поле для полнотекстового поиска ключевым словам, наименованию и описанию карты.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.AnyText CustomAttributes)
 
         // *** End programmer edit section *** (BackgroundLayer.AnyText CustomAttributes)
         [ICSSoft.STORMNET.NotStored()]
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.MSSQLDataService), "ISNULL(@Name@, \'\') + \' \' + ISNULL(@Description@, \'\') + \' \' + REPLACE(ISNULL(@KeyW" +
+            "ords@, \'\'), \',\', \' \')")]
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.PostgresDataService), "COALESCE(@Name@, \'\') || \' \' || COALESCE(@Description@, \'\') || \' \' || REPLACE(COAL" +
+            "ESCE(@KeyWords@, \'\'), \',\', \' \')")]
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.SQLDataService), "ISNULL(@Name@, \'\') + \' \' + ISNULL(@Description@, \'\') + \' \' + REPLACE(ISNULL(@KeyW" +
+            "ords@, \'\'), \',\', \' \')")]
         public virtual string AnyText
         {
             get
@@ -205,7 +235,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// Index.
+        /// Место слоя в иерархии (по сути z-index).
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.Index CustomAttributes)
 
@@ -236,7 +266,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// Visibility.
+        /// Видимость слоя.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.Visibility CustomAttributes)
 
@@ -267,7 +297,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// Type.
+        /// Тип слоя.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.Type CustomAttributes)
 
@@ -299,7 +329,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// Settings.
+        /// Настройки слоя.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.Settings CustomAttributes)
 
@@ -330,7 +360,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// Scale.
+        /// Масштаб или точность данных слоя.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.Scale CustomAttributes)
 
@@ -361,7 +391,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// CoordinateReferenceSystem.
+        /// Система координат слоя.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.CoordinateReferenceSystem CustomAttributes)
 
@@ -393,7 +423,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// BoundingBox.
+        /// Границы слоя.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.BoundingBox CustomAttributes)
 
@@ -519,7 +549,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// CreateTime.
+        /// Время создания объекта.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.CreateTime CustomAttributes)
 
@@ -550,7 +580,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// Creator.
+        /// Создатель объекта.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.Creator CustomAttributes)
 
@@ -582,7 +612,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// EditTime.
+        /// Время последнего редактирования объекта.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.EditTime CustomAttributes)
 
@@ -613,7 +643,7 @@ namespace NewPlatform.Flexberry.GIS
         }
         
         /// <summary>
-        /// Editor.
+        /// Последний редактор объекта.
         /// </summary>
         // *** Start programmer edit section *** (BackgroundLayer.Editor CustomAttributes)
 
@@ -651,7 +681,29 @@ namespace NewPlatform.Flexberry.GIS
         {
             
             /// <summary>
-            /// "BackgroundLayerE" view.
+            /// Представление для аудита.
+            /// </summary>
+            public static ICSSoft.STORMNET.View AuditView
+            {
+                get
+                {
+                    return ICSSoft.STORMNET.Information.GetView("AuditView", typeof(NewPlatform.Flexberry.GIS.BackgroundLayer));
+                }
+            }
+            
+            /// <summary>
+            /// Представление для форм редактирования агрегатора.
+            /// </summary>
+            public static ICSSoft.STORMNET.View BackgroundLayerD
+            {
+                get
+                {
+                    return ICSSoft.STORMNET.Information.GetView("BackgroundLayerD", typeof(NewPlatform.Flexberry.GIS.BackgroundLayer));
+                }
+            }
+            
+            /// <summary>
+            /// Представление для форм редактирования.
             /// </summary>
             public static ICSSoft.STORMNET.View BackgroundLayerE
             {
@@ -662,7 +714,7 @@ namespace NewPlatform.Flexberry.GIS
             }
             
             /// <summary>
-            /// "BackgroundLayerL" view.
+            /// Представление для списковых форм.
             /// </summary>
             public static ICSSoft.STORMNET.View BackgroundLayerL
             {
@@ -671,6 +723,98 @@ namespace NewPlatform.Flexberry.GIS
                     return ICSSoft.STORMNET.Information.GetView("BackgroundLayerL", typeof(NewPlatform.Flexberry.GIS.BackgroundLayer));
                 }
             }
+        }
+        
+        /// <summary>
+        /// Audit class settings.
+        /// </summary>
+        public class AuditSettings
+        {
+            
+            /// <summary>
+            /// Включён ли аудит для класса.
+            /// </summary>
+            public static bool AuditEnabled = true;
+            
+            /// <summary>
+            /// Использовать имя представления для аудита по умолчанию.
+            /// </summary>
+            public static bool UseDefaultView = false;
+            
+            /// <summary>
+            /// Включён ли аудит операции чтения.
+            /// </summary>
+            public static bool SelectAudit = false;
+            
+            /// <summary>
+            /// Имя представления для аудирования операции чтения.
+            /// </summary>
+            public static string SelectAuditViewName = "AuditView";
+            
+            /// <summary>
+            /// Включён ли аудит операции создания.
+            /// </summary>
+            public static bool InsertAudit = true;
+            
+            /// <summary>
+            /// Имя представления для аудирования операции создания.
+            /// </summary>
+            public static string InsertAuditViewName = "AuditView";
+            
+            /// <summary>
+            /// Включён ли аудит операции изменения.
+            /// </summary>
+            public static bool UpdateAudit = true;
+            
+            /// <summary>
+            /// Имя представления для аудирования операции изменения.
+            /// </summary>
+            public static string UpdateAuditViewName = "AuditView";
+            
+            /// <summary>
+            /// Включён ли аудит операции удаления.
+            /// </summary>
+            public static bool DeleteAudit = true;
+            
+            /// <summary>
+            /// Имя представления для аудирования операции удаления.
+            /// </summary>
+            public static string DeleteAuditViewName = "AuditView";
+            
+            /// <summary>
+            /// Путь к форме просмотра результатов аудита.
+            /// </summary>
+            public static string FormUrl = "";
+            
+            /// <summary>
+            /// Режим записи данных аудита (синхронный или асинхронный).
+            /// </summary>
+            public static ICSSoft.STORMNET.Business.Audit.Objects.tWriteMode WriteMode = ICSSoft.STORMNET.Business.Audit.Objects.tWriteMode.Synchronous;
+            
+            /// <summary>
+            /// Максимальная длина сохраняемого значения поля (если 0, то строка обрезаться не будет).
+            /// </summary>
+            public static int PrunningLength = 0;
+            
+            /// <summary>
+            /// Показывать ли пользователям в изменениях первичные ключи.
+            /// </summary>
+            public static bool ShowPrimaryKey = false;
+            
+            /// <summary>
+            /// Сохранять ли старое значение.
+            /// </summary>
+            public static bool KeepOldValue = true;
+            
+            /// <summary>
+            /// Сжимать ли сохраняемые значения.
+            /// </summary>
+            public static bool Compress = false;
+            
+            /// <summary>
+            /// Сохранять ли все значения атрибутов, а не только изменяемые.
+            /// </summary>
+            public static bool KeepAllValues = false;
         }
     }
 }
