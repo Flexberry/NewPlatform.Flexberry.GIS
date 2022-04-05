@@ -219,10 +219,9 @@ namespace NewPlatform.Flexberry.GIS
         {
             get
             {
-                // *** Start programmer edit section *** (BackgroundLayer.AnyText Get)
-
-                return null;
-                // *** End programmer edit section *** (BackgroundLayer.AnyText Get)
+                // *** Start programmer edit section *** (MapLayer.AnyText Get)
+                return $"{Name ?? string.Empty} {Description ?? string.Empty} {(KeyWords ?? string.Empty).Replace(",", " ")}";
+                // *** End programmer edit section *** (MapLayer.AnyText Get)
             }
             set
             {
