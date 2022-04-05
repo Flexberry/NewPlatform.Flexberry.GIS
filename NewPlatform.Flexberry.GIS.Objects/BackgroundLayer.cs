@@ -50,8 +50,7 @@ namespace NewPlatform.Flexberry.GIS
             "CoordinateReferenceSystem",
             "BoundingBox",
             "Public",
-            "Owner",
-            "SecurityKey"})]
+            "Owner"})]
     [View("BackgroundLayerE", new string[] {
             "Name as \'Наименование\'",
             "Description as \'Описание\'",
@@ -62,8 +61,7 @@ namespace NewPlatform.Flexberry.GIS
             "Settings as \'Настройки\'",
             "Scale as \'Масштаб\'",
             "CoordinateReferenceSystem as \'Система координат\'",
-            "BoundingBox as \'Граница\'",
-            "SecurityKey"})]
+            "BoundingBox as \'Граница\'"})]
     [View("BackgroundLayerL", new string[] {
             "Name as \'Наименование\'",
             "Description as \'Описание\'",
@@ -94,8 +92,6 @@ namespace NewPlatform.Flexberry.GIS
         private bool fPublic;
         
         private string fOwner;
-        
-        private string fSecurityKey;
         
         private System.Nullable<System.DateTime> fCreateTime;
         
@@ -515,38 +511,6 @@ namespace NewPlatform.Flexberry.GIS
                 // *** Start programmer edit section *** (BackgroundLayer.Owner Set end)
 
                 // *** End programmer edit section *** (BackgroundLayer.Owner Set end)
-            }
-        }
-        
-        /// <summary>
-        /// SecurityKey.
-        /// </summary>
-        // *** Start programmer edit section *** (BackgroundLayer.SecurityKey CustomAttributes)
-
-        // *** End programmer edit section *** (BackgroundLayer.SecurityKey CustomAttributes)
-        [StrLen(255)]
-        public virtual string SecurityKey
-        {
-            get
-            {
-                // *** Start programmer edit section *** (BackgroundLayer.SecurityKey Get start)
-
-                // *** End programmer edit section *** (BackgroundLayer.SecurityKey Get start)
-                string result = this.fSecurityKey;
-                // *** Start programmer edit section *** (BackgroundLayer.SecurityKey Get end)
-
-                // *** End programmer edit section *** (BackgroundLayer.SecurityKey Get end)
-                return result;
-            }
-            set
-            {
-                // *** Start programmer edit section *** (BackgroundLayer.SecurityKey Set start)
-
-                // *** End programmer edit section *** (BackgroundLayer.SecurityKey Set start)
-                this.fSecurityKey = value;
-                // *** Start programmer edit section *** (BackgroundLayer.SecurityKey Set end)
-
-                // *** End programmer edit section *** (BackgroundLayer.SecurityKey Set end)
             }
         }
         
