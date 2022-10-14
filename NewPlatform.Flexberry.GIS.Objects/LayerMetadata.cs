@@ -44,7 +44,8 @@ namespace NewPlatform.Flexberry.GIS
             "Settings as \'Настройки\'",
             "Scale as \'Масштаб\'",
             "CoordinateReferenceSystem as \'Система координат\'",
-            "BoundingBox as \'Граница\'"})]
+            "BoundingBox as \'Граница\'",
+			"Additionaldata as \'Дополнительные данные\'"})]
     [AssociatedDetailViewAttribute("LayerMetadataE", "LinkMetadata", "LinkMetadataD", true, "", "", true, new string[] {
             ""})]
     [View("LayerMetadataL", new string[] {
@@ -69,6 +70,8 @@ namespace NewPlatform.Flexberry.GIS
         private string fCoordinateReferenceSystem;
 
         private Microsoft.Spatial.Geography fBoundingBox;
+
+		private string fAdditionaldata;
 
         private System.Nullable<System.DateTime> fCreateTime;
 
@@ -368,7 +371,37 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (LayerMetadata.BoundingBox Set end)
             }
         }
+        
+        /// <summary>
+        /// Additionaldata.
+        /// </summary>
+        // *** Start programmer edit section *** (LayerMetadata.Additionaldata CustomAttributes)
 
+        // *** End programmer edit section *** (LayerMetadata.Additionaldata CustomAttributes)
+        public virtual string Additionaldata
+        {
+            get
+            {
+                // *** Start programmer edit section *** (LayerMetadata.Additionaldata Get start)
+
+                // *** End programmer edit section *** (LayerMetadata.Additionaldata Get start)
+                string result = this.fAdditionaldata;
+                // *** Start programmer edit section *** (LayerMetadata.Additionaldata Get end)
+
+                // *** End programmer edit section *** (LayerMetadata.Additionaldata Get end)
+                return result;
+            }
+            set
+            {
+                // *** Start programmer edit section *** (LayerMetadata.Additionaldata Set start)
+
+                // *** End programmer edit section *** (LayerMetadata.Additionaldata Set start)
+                this.fAdditionaldata = value;
+                // *** Start programmer edit section *** (LayerMetadata.Additionaldata Set end)
+
+                // *** End programmer edit section *** (LayerMetadata.Additionaldata Set end)
+            }
+        }
         /// <summary>
         /// Время создания объекта.
         /// </summary>
