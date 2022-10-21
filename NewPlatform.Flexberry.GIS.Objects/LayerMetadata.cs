@@ -30,6 +30,7 @@ namespace NewPlatform.Flexberry.GIS
     [AccessType(ICSSoft.STORMNET.AccessType.@this)]
     [View("AuditView", new string[] {
             "Name as \'Наименование\'",
+            "Additionaldata as \'Дополнительные данные\'",
             "Creator as \'Создатель\'",
             "CreateTime as \'Время создания\'",
             "Editor as \'Редактор\'",
