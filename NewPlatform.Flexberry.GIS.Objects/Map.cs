@@ -39,7 +39,6 @@ namespace NewPlatform.Flexberry.GIS
             "Public as \'Публичная карта\'",
             "CoordinateReferenceSystem as \'Система координат\'",
             "Picture as \'Изображение для карты\'",
-            "Settings as \'Настройки\'",
             "Creator as \'Создатель\'",
             "CreateTime as \'Время создания\'",
             "Editor as \'Редактор\'",
@@ -68,8 +67,7 @@ namespace NewPlatform.Flexberry.GIS
             "Scale as \'Масштаб\'",
             "CoordinateReferenceSystem as \'Система координат\'",
             "BoundingBox as \'Граница\'",
-            "Picture as \'Изображение\'",
-            "Settings as \'Настройки\'"})]
+            "Picture as \'Изображение\'"})]
     [AssociatedDetailViewAttribute("MapE", "MapLayer", "MapLayerD", true, "", "", true, new string[] {
             ""})]
     [View("MapL", new string[] {
@@ -78,8 +76,7 @@ namespace NewPlatform.Flexberry.GIS
             "Lng as \'Долгота\'",
             "Zoom as \'Зум\'",
             "Public as \'Общая\'",
-            "Picture as \'Изображение\'",
-            "Settings as \'Настройки\'"})]
+            "Picture as \'Изображение\'"})]
     public class Map : ICSSoft.STORMNET.DataObject, NewPlatform.Flexberry.GIS.IPublicOwner, IDataObjectWithAuditFields
     {
         
@@ -118,14 +115,12 @@ namespace NewPlatform.Flexberry.GIS
         private System.Nullable<System.DateTime> fEditTimeMapLayers;
         
         private NewPlatform.Flexberry.GIS.DetailArrayOfMapLayer fMapLayer;
-
-        private string fSettings;
-
+        
         // *** Start programmer edit section *** (Map CustomMembers)
 
         // *** End programmer edit section *** (Map CustomMembers)
 
-
+        
         /// <summary>
         /// Время создания объекта.
         /// </summary>
@@ -346,7 +341,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.KeyWords Set end)
             }
         }
-
+        
         /// <summary>
         /// Вычислимое поле для полнотекстового поиска ключевым словам, наименованию и описанию карты.
         /// </summary>
@@ -367,6 +362,7 @@ namespace NewPlatform.Flexberry.GIS
             get
             {
                 // *** Start programmer edit section *** (Map.AnyText Get)
+
                 return null;
                 // *** End programmer edit section *** (Map.AnyText Get)
             }
@@ -726,38 +722,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (Map.MapLayer Set end)
             }
         }
-
-        /// <summary>
-        /// Настройки карты.
-        /// </summary>
-        // *** Start programmer edit section *** (Map.Settings CustomAttributes)
-
-        // *** End programmer edit section *** (Map.Settings CustomAttributes)
-        public virtual string Settings
-        {
-            get
-            {
-                // *** Start programmer edit section *** (Map.Settings Get start)
-
-                // *** End programmer edit section *** (Map.Settings Get start)
-                string result = this.fSettings;
-                // *** Start programmer edit section *** (Map.Settings Get end)
-
-                // *** End programmer edit section *** (Map.Settings Get end)
-                return result;
-            }
-            set
-            {
-                // *** Start programmer edit section *** (Map.Settings Set start)
-
-                // *** End programmer edit section *** (Map.Settings Set start)
-                this.fSettings = value;
-                // *** Start programmer edit section *** (Map.Settings Set end)
-
-                // *** End programmer edit section *** (Map.Settings Set end)
-            }
-        }
-
+        
         /// <summary>
         /// Class views container.
         /// </summary>
