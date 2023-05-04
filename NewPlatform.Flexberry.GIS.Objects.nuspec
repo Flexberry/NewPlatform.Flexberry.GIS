@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>NewPlatform.Flexberry.GIS.Objects</id>
-    <version>1.0.0-beta08</version>
+    <version>1.0.0-beta09</version>
     <title>Flexberry GIS Objects</title>
     <authors>New Platform Ltd</authors>
     <owners>New Platform Ltd</owners>
@@ -15,6 +15,7 @@
     <releaseNotes>
 		Modified
 		- Add field Settings in Map
+	        - Add FavoriteFeature model
 	</releaseNotes>
     <copyright>Copyright New Platform Ltd 2020</copyright>
     <tags>Flexberry GIS</tags>
