@@ -13,8 +13,8 @@ namespace NewPlatform.Flexberry.GIS
     using System;
     using System.Xml;
     using ICSSoft.STORMNET;
-    
-    
+
+
     // *** Start programmer edit section *** (Using statements)
 
     // *** End programmer edit section *** (Using statements)
@@ -39,26 +39,26 @@ namespace NewPlatform.Flexberry.GIS
             "UserKey"})]
     public class FavoriteFeature : ICSSoft.STORMNET.DataObject
     {
-        
+
         private System.Nullable<System.DateTime> fCreateTime;
-        
+
         private string fCreator;
-        
+
         private System.Nullable<System.DateTime> fEditTime;
-        
+
         private string fEditor;
-        
-        private string fObjectKey;
-        
-        private string fObjectLayerKey;
-        
+
+        private System.Guid fObjectKey;
+
+        private System.Guid fObjectLayerKey;
+
         private string fUserKey;
-        
+
         // *** Start programmer edit section *** (FavoriteFeature CustomMembers)
 
         // *** End programmer edit section *** (FavoriteFeature CustomMembers)
 
-        
+
         /// <summary>
         /// Время создания объекта.
         /// </summary>
@@ -89,7 +89,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (FavoriteFeature.CreateTime Set end)
             }
         }
-        
+
         /// <summary>
         /// Создатель объекта.
         /// </summary>
@@ -121,7 +121,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (FavoriteFeature.Creator Set end)
             }
         }
-        
+
         /// <summary>
         /// Время последнего редактирования объекта.
         /// </summary>
@@ -152,7 +152,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (FavoriteFeature.EditTime Set end)
             }
         }
-        
+
         /// <summary>
         /// Последний редактор объекта.
         /// </summary>
@@ -184,23 +184,22 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (FavoriteFeature.Editor Set end)
             }
         }
-        
+
         /// <summary>
         /// Ключ объекта.
         /// </summary>
         // *** Start programmer edit section *** (FavoriteFeature.ObjectKey CustomAttributes)
 
         // *** End programmer edit section *** (FavoriteFeature.ObjectKey CustomAttributes)
-        [StrLen(50)]
         [NotNull()]
-        public virtual string ObjectKey
+        public virtual System.Guid ObjectKey
         {
             get
             {
                 // *** Start programmer edit section *** (FavoriteFeature.ObjectKey Get start)
 
                 // *** End programmer edit section *** (FavoriteFeature.ObjectKey Get start)
-                string result = this.fObjectKey;
+                System.Guid result = this.fObjectKey;
                 // *** Start programmer edit section *** (FavoriteFeature.ObjectKey Get end)
 
                 // *** End programmer edit section *** (FavoriteFeature.ObjectKey Get end)
@@ -217,23 +216,22 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (FavoriteFeature.ObjectKey Set end)
             }
         }
-        
+
         /// <summary>
         /// Ключ слоя.
         /// </summary>
         // *** Start programmer edit section *** (FavoriteFeature.ObjectLayerKey CustomAttributes)
 
         // *** End programmer edit section *** (FavoriteFeature.ObjectLayerKey CustomAttributes)
-        [StrLen(50)]
         [NotNull()]
-        public virtual string ObjectLayerKey
+        public virtual System.Guid ObjectLayerKey
         {
             get
             {
                 // *** Start programmer edit section *** (FavoriteFeature.ObjectLayerKey Get start)
 
                 // *** End programmer edit section *** (FavoriteFeature.ObjectLayerKey Get start)
-                string result = this.fObjectLayerKey;
+                System.Guid result = this.fObjectLayerKey;
                 // *** Start programmer edit section *** (FavoriteFeature.ObjectLayerKey Get end)
 
                 // *** End programmer edit section *** (FavoriteFeature.ObjectLayerKey Get end)
@@ -250,7 +248,7 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (FavoriteFeature.ObjectLayerKey Set end)
             }
         }
-        
+
         /// <summary>
         /// Ключ пользователя.
         /// </summary>
@@ -283,13 +281,13 @@ namespace NewPlatform.Flexberry.GIS
                 // *** End programmer edit section *** (FavoriteFeature.UserKey Set end)
             }
         }
-        
+
         /// <summary>
         /// Class views container.
         /// </summary>
         public class Views
         {
-            
+
             /// <summary>
             /// "AuditView" view.
             /// </summary>
